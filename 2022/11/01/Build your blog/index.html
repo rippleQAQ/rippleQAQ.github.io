@@ -24,7 +24,7 @@
 <meta property="og:description" content="想要一个博客吗？那我们开始吧！ 一、前置条件1.一个github账号注册一个github账号非常简单，这里可参照https:&#x2F;&#x2F;cloud.tencent.com&#x2F;developer&#x2F;article&#x2F;1487508   2.安装gitGit是目前世界上最先进的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。也就是用来管理你的hexo博客文章，上传到GitHub的工具。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-01T06:29:46.047Z">
-<meta property="article:modified_time" content="2022-11-01T17:02:35.197Z">
+<meta property="article:modified_time" content="2022-11-01T17:11:34.204Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -147,7 +147,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~3.29K
+                        ~3.25K
                     
                     字
                 </li>
@@ -158,7 +158,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1667322155197"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1667322694204"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -224,9 +224,9 @@
 <p>当然这里rippleQAQ换为你的用户名  </p>
 <h3 id="3-进行hexo部署"><a href="#3-进行hexo部署" class="headerlink" title="3.进行hexo部署"></a>3.进行hexo部署</h3><p>离你的博客就差一步了，加油！</p>
 <p>打开站点配置文件**_config.yml**，翻到最后，修改为</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/YourgithubName/YourgithubName.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/YourgithubName/YourgithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
-<p><strong>YourgithubName请改为你的用户名，如rippleQAQ/rippleQAQ.github.io</strong><br>我之前搞好久弄不起来好像就是这里repo填成github.io.git了，多了.git就一直没成，但网上之前是有人这样成了的，总之我这里这样是行了  </p>
+<p><strong>YourgithubName请改为你的用户名，如rippleQAQ/rippleQAQ.github.io.git</strong><br>如果不行试试把.git删掉?两种好像都行</p>
 <p>需要先安装deploy-git，才能用命令部署到GitHub</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 <p>完成后依次输入（注意要在myblog这个文件夹下）</p>
@@ -326,7 +326,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-11-01T17:02:35.197Z" itemprop="dateModified">最后编辑：2022-11-02</time>
+                    <time datetime="2022-11-01T17:11:34.204Z" itemprop="dateModified">最后编辑：2022-11-02</time>
                 </div>
             </div>
         </footer>
