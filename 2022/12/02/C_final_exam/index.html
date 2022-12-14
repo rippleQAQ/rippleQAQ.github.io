@@ -23,9 +23,9 @@
 <meta property="og:site_name" content="ripple">
 <meta property="og:description" content="期末到了，在C语言期末众多作业选择中选择了比较有趣的利用EasyX开发小游戏第一次和别人一起开发程序，故作记录。 一、主题确定在决定用EasyX进行小游戏开发后我们开始考虑制作的方向鉴于使用EasyX图形库，我们打算开发一个像素游戏商量过后决定做一款类似（抄袭）地城迷踪（Dungeon and Puzzles）的游戏     二、前置准备和学习1.EasyX的安装EasyX 是针对 C&#x2F;C++ 的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://rippleqaq.github.io/2022/12/02/static/C_final_exam/ground.png">
-<meta property="og:image" content="https://rippleqaq.github.io/2022/12/02/static/C_final_exam/wall.png">
-<meta property="og:image" content="https://rippleqaq.github.io/2022/12/02/static/C_final_exam/chest.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/ground.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/wall.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/chest.png">
 <meta property="og:image" content="https://rippleqaq.github.io/2022/12/02/static/C_final_exam/chest_on_ground.png">
 <meta property="og:image" content="https://rippleqaq.github.io/2022/12/02/static/C_final_exam/chest_opened.png">
 <meta property="og:image" content="https://rippleqaq.github.io/2022/12/02/static/C_final_exam/key.png">
@@ -38,10 +38,10 @@
 <meta property="og:image" content="https://rippleqaq.github.io/2022/12/02/static/C_final_exam/left.png">
 <meta property="og:image" content="https://rippleqaq.github.io/2022/12/02/static/C_final_exam/right.png">
 <meta property="article:published_time" content="2022-12-02T15:52:47.708Z">
-<meta property="article:modified_time" content="2022-12-09T03:08:57.314Z">
+<meta property="article:modified_time" content="2022-12-14T14:51:07.258Z">
 <meta property="article:author" content="rippleQAQ">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rippleqaq.github.io/2022/12/02/static/C_final_exam/ground.png">
+<meta name="twitter:image" content="https://rippleqaq.github.io/static/C_final_exam/ground.png">
   
   <!-- 站点验证相关 -->
   
@@ -173,7 +173,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1670555337314"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1671029467258"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -186,7 +186,7 @@
 <h3 id="2-EasyX的学习"><a href="#2-EasyX的学习" class="headerlink" title="2.EasyX的学习"></a>2.EasyX的学习</h3><p>EasyX图形库的学习，在B站上找了一个<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11p4y1i74A/">EasyX教学视频</a>进行观看和学习。讲的还是不错的。</p>
 <p>安装也可参照此视频。</p>
 <h3 id="3-图片的绘制"><a href="#3-图片的绘制" class="headerlink" title="3.图片的绘制"></a>3.图片的绘制</h3><p>图片的绘制是在写代码中顺便一起完成的，这里使用像素画软件aseprite进行绘制，对地城迷踪（Dungeon and Puzzles）与网络上的一些图片进行临摹。画出了一系列的像素图片。</p>
-<p><img src="../static/C_final_exam/ground.png" alt="ground"><img src="../static/C_final_exam/wall.png" alt="wall"><img src="../static/C_final_exam/chest.png" alt="chest"><img src="../static/C_final_exam/chest_on_ground.png" alt="chest_on_ground"><img src="../static/C_final_exam/chest_opened.png" alt="chest_opened"><img src="../static/C_final_exam/key.png" alt="key"><img src="../static/C_final_exam/key_on_ground.png" alt="key_on_ground"><img src="../static/C_final_exam/hero.png" alt="hero"><img src="../static/C_final_exam/hero_on_ground.png" alt="hero_on_ground"><img src="../static/C_final_exam/sword.png" alt="sword"></p>
+<p><img src="/static/C_final_exam/ground.png" alt="ground"><img src="/static/C_final_exam/wall.png" alt="wall"><img src="/static/C_final_exam/chest.png" alt="chest"><img src="../static/C_final_exam/chest_on_ground.png" alt="chest_on_ground"><img src="../static/C_final_exam/chest_opened.png" alt="chest_opened"><img src="../static/C_final_exam/key.png" alt="key"><img src="../static/C_final_exam/key_on_ground.png" alt="key_on_ground"><img src="../static/C_final_exam/hero.png" alt="hero"><img src="../static/C_final_exam/hero_on_ground.png" alt="hero_on_ground"><img src="../static/C_final_exam/sword.png" alt="sword"></p>
 <p><img src="../static/C_final_exam/up.png" alt="up"><img src="../static/C_final_exam/down.png" alt="down"><img src="../static/C_final_exam/left.png" alt="left"><img src="../static/C_final_exam/right.png" alt="right"></p>
 <h2 id="三、代码逻辑的构建"><a href="#三、代码逻辑的构建" class="headerlink" title="三、代码逻辑的构建"></a>三、代码逻辑的构建</h2><p>游戏主要代码在test.cpp中</p>
 <p>函数、全局变量声明在game.h中                                           </p>
@@ -286,7 +286,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2022-12-09T03:08:57.314Z" itemprop="dateModified">最后编辑：2022-12-09</time>
+                    <time datetime="2022-12-14T14:51:07.258Z" itemprop="dateModified">最后编辑：2022-12-14</time>
                 </div>
             </div>
         </footer>
