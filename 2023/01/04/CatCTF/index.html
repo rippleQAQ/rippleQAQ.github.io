@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   
   
-  <title>大一C语言期末作业制作记录-利用EasyX开发小游戏 | ripple</title>
+  <title>CatCTF | ripple</title>
   <meta name="author" content="rippleQAQ" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -16,32 +16,19 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="期末到了，在C语言期末众多作业选择中选择了比较有趣的利用EasyX开发小游戏第一次和别人一起开发程序，故作记录。 一、主题确定在决定用EasyX进行小游戏开发后我们开始考虑制作的方向鉴于使用EasyX图形库，我们打算开发一个像素游戏商量过后决定做一款类似（抄袭）地城迷踪（Dungeon and Puzzles）的游戏     二、前置准备和学习1.EasyX的安装EasyX 是针对 C&#x2F;C++ 的">
+  <meta name="description" content="一个为猫猫打猫粮的公益CTF，记录一下收获 一、MISC1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。 附件是GPS数据文件CatchCat.txt，里面有很多GPS数据： 格式都是： $GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E 网上的解释：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大一C语言期末作业制作记录-利用EasyX开发小游戏">
-<meta property="og:url" content="https://rippleqaq.github.io/2022/12/02/C_final_exam/index.html">
+<meta property="og:title" content="CatCTF">
+<meta property="og:url" content="https://rippleqaq.github.io/2023/01/04/CatCTF/index.html">
 <meta property="og:site_name" content="ripple">
-<meta property="og:description" content="期末到了，在C语言期末众多作业选择中选择了比较有趣的利用EasyX开发小游戏第一次和别人一起开发程序，故作记录。 一、主题确定在决定用EasyX进行小游戏开发后我们开始考虑制作的方向鉴于使用EasyX图形库，我们打算开发一个像素游戏商量过后决定做一款类似（抄袭）地城迷踪（Dungeon and Puzzles）的游戏     二、前置准备和学习1.EasyX的安装EasyX 是针对 C&#x2F;C++ 的">
+<meta property="og:description" content="一个为猫猫打猫粮的公益CTF，记录一下收获 一、MISC1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。 附件是GPS数据文件CatchCat.txt，里面有很多GPS数据： 格式都是： $GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E 网上的解释：">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/ground.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/wall.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/chest.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/chest_on_ground.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/chest_opened.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/key.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/key_on_ground.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/hero.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/hero_on_ground.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/sword.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/up.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/down.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/left.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/C_final_exam/right.png">
-<meta property="article:published_time" content="2022-12-02T15:52:47.708Z">
-<meta property="article:modified_time" content="2023-01-04T02:49:27.359Z">
+<meta property="og:image" content="https://rippleqaq.github.io/static/CatCTF/GPS.png">
+<meta property="article:published_time" content="2023-01-04T13:16:03.582Z">
+<meta property="article:modified_time" content="2023-01-04T13:17:48.943Z">
 <meta property="article:author" content="rippleQAQ">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rippleqaq.github.io/static/C_final_exam/ground.png">
+<meta name="twitter:image" content="https://rippleqaq.github.io/static/CatCTF/GPS.png">
   
   <!-- 站点验证相关 -->
   
@@ -146,15 +133,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="https://rippleqaq.github.io/2022/12/02/C_final_exam/">
+    <link itemprop="mainEntityOfPage" href="https://rippleqaq.github.io/2023/01/04/CatCTF/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">大一C语言期末作业制作记录-利用EasyX开发小游戏</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">CatCTF</h1>
             
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2022-12-02T15:52:47.708Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2022-12-02</time></li>
+                <li><time datetime="2023-01-04T13:16:03.582Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-01-04</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">rippleQAQ</span>
                 </li>
@@ -162,7 +149,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        1020
+                        ~1.89K
                     
                     字
                 </li>
@@ -173,33 +160,46 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672800567359"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672838268943"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
                 <div class="kratos-post-inner-toc toc-div-class" >
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%BB%E9%A2%98%E7%A1%AE%E5%AE%9A"><span class="toc-number">1.</span> <span class="toc-text">一、主题确定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87%E5%92%8C%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">二、前置准备和学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-EasyX%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.</span> <span class="toc-text">1.EasyX的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-EasyX%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.2.</span> <span class="toc-text">2.EasyX的学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9B%BE%E7%89%87%E7%9A%84%E7%BB%98%E5%88%B6"><span class="toc-number">2.3.</span> <span class="toc-text">3.图片的绘制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">三、代码逻辑的构建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-number">3.1.</span> <span class="toc-text">2.基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E7%9A%84%E5%8A%9E%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">3.遇到的问题与解决的办法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%85%B3%E9%94%AE%E5%87%BD%E6%95%B0%E7%9A%84%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.1.</span> <span class="toc-text">（1）关键函数的逻辑实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-%E5%8F%AF%E8%A7%86%E5%8C%96%E7%A7%BB%E5%8A%A8%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84bug"><span class="toc-number">3.2.2.</span> <span class="toc-text">（2） 可视化移动时出现的bug</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81MISC"><span class="toc-number">1.</span> <span class="toc-text">一、MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CatchCat"><span class="toc-number">1.1.</span> <span class="toc-text">1.CatchCat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Miao"><span class="toc-number">1.2.</span> <span class="toc-text">2.Miao</span></a></li></ol></li></ol>
                 </div>
             
             <hr />
-            <div itemprop="articleBody"><p>期末到了，在C语言期末众多作业选择中选择了比较有趣的利用EasyX开发小游戏<br>第一次和别人一起开发程序，故作记录。</p>
-<h2 id="一、主题确定"><a href="#一、主题确定" class="headerlink" title="一、主题确定"></a>一、主题确定</h2><p>在决定用EasyX进行小游戏开发后我们开始考虑制作的方向<br>鉴于使用EasyX图形库，我们打算开发一个像素游戏<br>商量过后决定做一款类似（抄袭）<strong>地城迷踪（Dungeon and Puzzles）</strong>的游戏    </p>
-<h2 id="二、前置准备和学习"><a href="#二、前置准备和学习" class="headerlink" title="二、前置准备和学习"></a>二、前置准备和学习</h2><h3 id="1-EasyX的安装"><a href="#1-EasyX的安装" class="headerlink" title="1.EasyX的安装"></a>1.EasyX的安装</h3><p>EasyX 是针对 C/C++ 的图形库，可以帮助使用C/C++语言的程序员快速上手图形和游戏编程，可以用来做些简单的演示2d类游戏，没有cocos2d-x那样重量级，学习起来也比较简单。</p>
-<p>在<a target="_blank" rel="noopener" href="https://easyx.cn/">EasyX官网</a>进行下载并安装即可</p>
-<h3 id="2-EasyX的学习"><a href="#2-EasyX的学习" class="headerlink" title="2.EasyX的学习"></a>2.EasyX的学习</h3><p>EasyX图形库的学习，在B站上找了一个<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV11p4y1i74A/">EasyX教学视频</a>进行观看和学习。讲的还是不错的。</p>
-<p>安装也可参照此视频。</p>
-<h3 id="3-图片的绘制"><a href="#3-图片的绘制" class="headerlink" title="3.图片的绘制"></a>3.图片的绘制</h3><p>图片的绘制是在写代码中顺便一起完成的，这里使用像素画软件aseprite进行绘制，对地城迷踪（Dungeon and Puzzles）与网络上的一些图片进行临摹。画出了一系列的像素图片。</p>
-<p><img src="/static/C_final_exam/ground.png" alt="ground"><img src="/static/C_final_exam/wall.png" alt="wall"><img src="/static/C_final_exam/chest.png" alt="chest"><img src="/static/C_final_exam/chest_on_ground.png" alt="chest_on_ground"><img src="/static/C_final_exam/chest_opened.png" alt="chest_opened"><img src="/static/C_final_exam/key.png" alt="key"><img src="/static/C_final_exam/key_on_ground.png" alt="key_on_ground"><img src="/static/C_final_exam/hero.png" alt="hero"><img src="/static/C_final_exam/hero_on_ground.png" alt="hero_on_ground"><img src="/static/C_final_exam/sword.png" alt="sword"></p>
-<p><img src="/static/C_final_exam/up.png" alt="up"><img src="/static/C_final_exam/down.png" alt="down"><img src="/static/C_final_exam/left.png" alt="left"><img src="/static/C_final_exam/right.png" alt="right"></p>
-<h2 id="三、代码逻辑的构建"><a href="#三、代码逻辑的构建" class="headerlink" title="三、代码逻辑的构建"></a>三、代码逻辑的构建</h2><p>游戏主要代码在test.cpp中</p>
-<p>函数、全局变量声明在game.h中                                           </p>
-<p>自定义函数的逻辑实现在game.cpp中</p>
-<h3 id="2-基本思路"><a href="#2-基本思路" class="headerlink" title="2.基本思路"></a>2.基本思路</h3><p>先不用EasyX库，利用已有的C语言知识对最基本的逻辑利用二维数组模拟实现游戏过程，再加入二维图形数组利用EasyX库进行可视化的开发。</p>
-<h3 id="3-遇到的问题与解决的办法"><a href="#3-遇到的问题与解决的办法" class="headerlink" title="3.遇到的问题与解决的办法"></a>3.遇到的问题与解决的办法</h3><p><strong>前排提醒：并没有对代码经行过多的优化，算法上有许多不足甚至可能有错误，还请各位大佬发现指出！感谢！</strong></p>
-<h4 id="（1）关键函数的逻辑实现"><a href="#（1）关键函数的逻辑实现" class="headerlink" title="（1）关键函数的逻辑实现"></a>（1）关键函数的逻辑实现</h4><p>首先是关键函数move的逻辑编写，遇到拿了钥匙打不开箱子和未到箱子附近就直接打开了箱子的问题。前者定义了一个全局变量flag解决，后者用移动前先用变量i、j 记录开始移动时位置判断解决。</p>
-<p>同伴在编写initground1（加载第一张地图）函数是也出现了问题，初始化的地图转了90°，最终我们也没找到问题所在，最后将下标img从[i][j]改为[j][i]硬生生的将图片转回解决了问题，<strong>这里也还是不清楚为什么会有这个问题</strong>。  </p>
-<h4 id="（2）-可视化移动时出现的bug"><a href="#（2）-可视化移动时出现的bug" class="headerlink" title="（2） 可视化移动时出现的bug"></a>（2） 可视化移动时出现的bug</h4><p>一开始是打算用键盘进行的移动操作，但是每次会一下接受到很多的键盘请求，出现一堆bug，最后我们选用了利用图片鼠标点击的形式进行解决。</p>
+            <div itemprop="articleBody"><p>一个为猫猫打猫粮的公益CTF，记录一下收获</p>
+<h2 id="一、MISC"><a href="#一、MISC" class="headerlink" title="一、MISC"></a>一、MISC</h2><h3 id="1-CatchCat"><a href="#1-CatchCat" class="headerlink" title="1.CatchCat"></a>1.<strong>CatchCat</strong></h3><p>第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。</p>
+<p>附件是GPS数据文件CatchCat.txt，里面有很多GPS数据：</p>
+<p>格式都是：</p>
+<p>$GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E</p>
+<p>网上的解释：<a target="_blank" rel="noopener" href="https://www.lehoon.cn/orther/2017/04/25/gnss-gpgga-formet.html">GPGGA格式详解</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">该数据帧的结构及各字段释义如下：</span><br><span class="line">$GPGGA,&lt;1&gt;,&lt;2&gt;,&lt;3&gt;,&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;,&lt;8&gt;,&lt;9&gt;,M,&lt;10&gt;,M,&lt;11&gt;,&lt;12&gt;*xx&lt;CR&gt;&lt;LF&gt;</span><br><span class="line">$GPGGA：起始引导符及语句格式说明(本句为GPS定位数据)；</span><br><span class="line">&lt;1&gt; UTC时间，格式为hhmmss.sss；</span><br><span class="line">&lt;2&gt; 纬度，格式为ddmm.mmmm(第一位是零也将传送)；</span><br><span class="line">&lt;3&gt; 纬度半球，N或S(北纬或南纬)</span><br><span class="line">&lt;4&gt; 经度，格式为dddmm.mmmm(第一位零也将传送)；</span><br><span class="line">&lt;5&gt; 经度半球，E或W(东经或西经)</span><br><span class="line">&lt;6&gt; GPS状态， 0初始化， 1单点定位， 2码差分， 3无效PPS， 4固定解， 5浮点解， 6正在估算 7，人工输入固定值， 8模拟模式， 9WAAS差分</span><br><span class="line">&lt;7&gt; 使用卫星数量，从00到12(第一个零也将传送)</span><br><span class="line">&lt;8&gt; HDOP-水平精度因子，0.5到99.9，一般认为HDOP越小，质量越好。</span><br><span class="line">&lt;9&gt; 椭球高，-9999.9到9999.9米</span><br><span class="line">M 指单位米</span><br><span class="line">&lt;10&gt; 大地水准面高度异常差值，-9999.9到9999.9米</span><br><span class="line">M 指单位米</span><br><span class="line">&lt;11&gt; 差分GPS数据期限(RTCM SC-104)，最后设立RTCM传送的秒数量，如不是差分定位则为空</span><br><span class="line">&lt;12&gt; 差分参考基站标号，从0000到1023(首位0也将传送)。</span><br><span class="line">* 语句结束标志符</span><br><span class="line">xx 从$开始到*之间的所有ASCII码的异或校验</span><br><span class="line">&lt;CR&gt; 回车符，结束标记</span><br><span class="line">&lt;LF&gt; 换行符，结束标记</span><br></pre></td></tr></table></figure>
+
+<p>但这题只用经纬就行。</p>
+<p>上网知道了一个好用的py库叫pynmea2，可以提取其中的经纬度信息，然后查到了可以用</p>
+<p><a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/javascript-api/example/marker/replaying-historical-running-data">https://lbs.amap.com/demo/javascript-api/example/marker/replaying-historical-running-data</a></p>
+<p>来回放点的轨迹。</p>
+<p>写了一个Python脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pynmea2</span><br><span class="line"></span><br><span class="line">filename = <span class="string">&#x27;CatchCat.txt&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span> = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename) <span class="keyword">as</span> file_object:</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> line <span class="keyword">in</span> file_object:</span><br><span class="line"></span><br><span class="line">     list1= []</span><br><span class="line"></span><br><span class="line">     msg = pynmea2.parse(line)</span><br><span class="line"></span><br><span class="line">     list1.append(msg.longitude)</span><br><span class="line"></span><br><span class="line">     list1.append(msg.latitude)</span><br><span class="line"></span><br><span class="line">     <span class="built_in">list</span>.append(list1)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p> 将输出结果粘贴到网站右侧放经纬度的地方，得到路线图：</p>
+<p><img src="/static/CatCTF/GPS.png" alt="GPS"></p>
+<p>虽然有点不清楚，但还是看的出来的，flag是CatCTF{GPS_M1ao}</p>
+<h3 id="2-Miao"><a href="#2-Miao" class="headerlink" title="2.Miao"></a>2.Miao</h3><p>下载得到一张图片，binwalk分析不出来，用16进制编译器查看发现有一个wav文件，手动分离。</p>
+<p>是猫猫的Miao叫声的一个。</p>
+<p>用Audacity打开，查看频谱图得到key:CatCTF</p>
+<p>上网查了一下，知道了一款叫DeepSound的隐写工具。</p>
+<p>用DeepSound打开，用CatCTF作为密码，得到flag.txt。</p>
+<p>flag,txt打开发现是猫叫的密码，上网查了一下，选了一个网站解密</p>
+<p><a target="_blank" rel="noopener" href="http://hi.pcmoe.net/roar.html%E3%80%82">http://hi.pcmoe.net/roar.html。</a></p>
+<p>得到flag</p>
+<p>CatCTF{d0_y0u_Hate_c4t_ba3k1ng_?_M1ao~}</p>
+<p><strong>小总结：有找到密码的音频可以考虑DeepSound和SilentEye，这两个工具是可能要输入密码的</strong></p>
 </div>
         </div>
         
@@ -253,7 +253,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://rippleqaq.github.io/2022/12/02/C_final_exam/",
+                text: "https://rippleqaq.github.io/2023/01/04/CatCTF/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -265,10 +265,13 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://rippleqaq.github.io/2022/12/02/C_final_exam/";
-            const title         = "「大一C语言期末作业制作记录-利用EasyX开发小游戏」";
-            const excerpt       = `期末到了，在C语言期末众多作业选择中选择了比较有趣的利用EasyX开发小游戏第一次和别人一起开发程序，故作记录。
-一、主题确定在决定用EasyX进行小游戏开发后我们开始考虑制作的方向鉴于使用EasyX图形库，我们打算开发一个像素游戏商...`;
+            const hostUrl       = "https://rippleqaq.github.io/2023/01/04/CatCTF/";
+            const title         = "「CatCTF」";
+            const excerpt       = `一个为猫猫打猫粮的公益CTF，记录一下收获
+一、MISC1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。
+附件是GPS数据文件CatchCat.txt，里面有很多GPS数据：
+格式都是：
+$GPGGA,0...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -290,7 +293,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-01-04T02:49:27.359Z" itemprop="dateModified">最后编辑：2023-01-04</time>
+                    <time datetime="2023-01-04T13:17:48.943Z" itemprop="dateModified">最后编辑：2023-01-04</time>
                 </div>
             </div>
         </footer>
@@ -299,13 +302,9 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             
             <div class="nav-previous clearfix">
-                <a title=" Hexo 框架下利用 github 搭建博客 (win 11)" href="/2022/11/01/Build_your_blog/">&lt; 上一篇</a>
+                <a title=" 向博客中上传图片" href="/2022/12/15/upload_img_on_blog/">&lt; 上一篇</a>
             </div>
             
-            
-            <div class="nav-next clearfix">
-                <a title=" 初识flask" href="/2022/12/09/flask_HelloFlask/">下一篇 &gt;</a>
-            </div>
             
         </nav>
     
@@ -373,7 +372,7 @@
         <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
     </h4>
     <div class="textwidget">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%B8%BB%E9%A2%98%E7%A1%AE%E5%AE%9A"><span class="toc-text">一、主题确定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87%E5%92%8C%E5%AD%A6%E4%B9%A0"><span class="toc-text">二、前置准备和学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-EasyX%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text">1.EasyX的安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-EasyX%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-text">2.EasyX的学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9B%BE%E7%89%87%E7%9A%84%E7%BB%98%E5%88%B6"><span class="toc-text">3.图片的绘制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="toc-text">三、代码逻辑的构建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-text">2.基本思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E7%9A%84%E5%8A%9E%E6%B3%95"><span class="toc-text">3.遇到的问题与解决的办法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%85%B3%E9%94%AE%E5%87%BD%E6%95%B0%E7%9A%84%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0"><span class="toc-text">（1）关键函数的逻辑实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-%E5%8F%AF%E8%A7%86%E5%8C%96%E7%A7%BB%E5%8A%A8%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84bug"><span class="toc-text">（2） 可视化移动时出现的bug</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81MISC"><span class="toc-text">一、MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CatchCat"><span class="toc-text">1.CatchCat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Miao"><span class="toc-text">2.Miao</span></a></li></ol></li></ol>
     </div>
 </aside>
                 
