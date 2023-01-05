@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   
   
-  <title>CatCTF | ripple</title>
+  <title>flask中debug、host、port的配置方法(pycharm社区版) | ripple</title>
   <meta name="author" content="rippleQAQ" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -16,22 +16,21 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="一个为猫猫打猫粮的公益CTF，记录一下收获 一、Misc1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。 附件是GPS数据文件CatchCat.txt，里面有很多GPS数据： 格式都是： $GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E 网上的解释：">
+  <meta name="description" content="pycharm专业版是有专门用于flask开发的，可以在右上角直接调，一下主要是讲讲这三个的作用和pycharm社区版的配置方法。 一、dubug1.作用（1）在debug模式下，修改代码保存后会检测到代码的更改，刷新后自动加载，无需每次关闭重开，更加便捷。 （2）debug模式下，如果代码有bug，在浏览器上可以看到出错信息。 在Flask中文文档中有一个提醒： Attention虽然交互调试器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CatCTF">
-<meta property="og:url" content="https://rippleqaq.github.io/2023/01/04/CatCTF/index.html">
+<meta property="og:title" content="flask中debug、host、port的配置方法(pycharm社区版)">
+<meta property="og:url" content="https://rippleqaq.github.io/2023/01/05/flask_configure/index.html">
 <meta property="og:site_name" content="ripple">
-<meta property="og:description" content="一个为猫猫打猫粮的公益CTF，记录一下收获 一、Misc1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。 附件是GPS数据文件CatchCat.txt，里面有很多GPS数据： 格式都是： $GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E 网上的解释：">
+<meta property="og:description" content="pycharm专业版是有专门用于flask开发的，可以在右上角直接调，一下主要是讲讲这三个的作用和pycharm社区版的配置方法。 一、dubug1.作用（1）在debug模式下，修改代码保存后会检测到代码的更改，刷新后自动加载，无需每次关闭重开，更加便捷。 （2）debug模式下，如果代码有bug，在浏览器上可以看到出错信息。 在Flask中文文档中有一个提醒： Attention虽然交互调试器">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://rippleqaq.github.io/static/CatCTF/GPS.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/CatCTF/password.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/CatCTF/rabbit.png">
-<meta property="og:image" content="https://rippleqaq.github.io/static/CatCTF/base91.png">
-<meta property="article:published_time" content="2023-01-04T13:16:03.582Z">
-<meta property="article:modified_time" content="2023-01-05T05:30:14.885Z">
+<meta property="og:image" content="https://rippleqaq.github.io/static/flask_configure/ori_app.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/flask_configure/app.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/flask_configure/phone.jpg">
+<meta property="article:published_time" content="2023-01-05T06:27:47.193Z">
+<meta property="article:modified_time" content="2023-01-05T07:35:12.969Z">
 <meta property="article:author" content="rippleQAQ">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rippleqaq.github.io/static/CatCTF/GPS.png">
+<meta name="twitter:image" content="https://rippleqaq.github.io/static/flask_configure/ori_app.png">
   
   <!-- 站点验证相关 -->
   
@@ -136,15 +135,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="https://rippleqaq.github.io/2023/01/04/CatCTF/">
+    <link itemprop="mainEntityOfPage" href="https://rippleqaq.github.io/2023/01/05/flask_configure/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">CatCTF</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">flask中debug、host、port的配置方法(pycharm社区版)</h1>
             
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2023-01-04T13:16:03.582Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-01-04</time></li>
+                <li><time datetime="2023-01-05T06:27:47.193Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-01-05</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">rippleQAQ</span>
                 </li>
@@ -152,7 +151,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~2.30K
+                        1426
                     
                     字
                 </li>
@@ -163,62 +162,57 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672896614885"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672904112969"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
                 <div class="kratos-post-inner-toc toc-div-class" >
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Misc"><span class="toc-number">1.</span> <span class="toc-text">一、Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CatchCat"><span class="toc-number">1.1.</span> <span class="toc-text">1.CatchCat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Miao"><span class="toc-number">1.2.</span> <span class="toc-text">2.Miao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-catcat"><span class="toc-number">1.3.</span> <span class="toc-text">3.catcat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Web"><span class="toc-number">2.</span> <span class="toc-text">二、Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-catcat"><span class="toc-number">2.1.</span> <span class="toc-text">1.catcat</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81dubug"><span class="toc-number">1.</span> <span class="toc-text">一、dubug</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">1.作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2.配置方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81host"><span class="toc-number">2.</span> <span class="toc-text">二、host</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%9C%E7%94%A8-1"><span class="toc-number">2.1.</span> <span class="toc-text">1.作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95-1"><span class="toc-number">2.2.</span> <span class="toc-text">2.配置方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81port"><span class="toc-number">3.</span> <span class="toc-text">三、port</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%9C%E7%94%A8-2"><span class="toc-number">3.1.</span> <span class="toc-text">1.作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">2.修改方法</span></a></li></ol></li></ol>
                 </div>
             
             <hr />
-            <div itemprop="articleBody"><p>一个为猫猫打猫粮的公益CTF，记录一下收获</p>
-<h2 id="一、Misc"><a href="#一、Misc" class="headerlink" title="一、Misc"></a>一、Misc</h2><h3 id="1-CatchCat"><a href="#1-CatchCat" class="headerlink" title="1.CatchCat"></a>1.<strong>CatchCat</strong></h3><p>第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。</p>
-<p>附件是GPS数据文件CatchCat.txt，里面有很多GPS数据：</p>
-<p>格式都是：</p>
-<p>$GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E</p>
-<p>网上的解释：<a target="_blank" rel="noopener" href="https://www.lehoon.cn/orther/2017/04/25/gnss-gpgga-formet.html">GPGGA格式详解</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">该数据帧的结构及各字段释义如下：</span><br><span class="line">$GPGGA,&lt;1&gt;,&lt;2&gt;,&lt;3&gt;,&lt;4&gt;,&lt;5&gt;,&lt;6&gt;,&lt;7&gt;,&lt;8&gt;,&lt;9&gt;,M,&lt;10&gt;,M,&lt;11&gt;,&lt;12&gt;*xx&lt;CR&gt;&lt;LF&gt;</span><br><span class="line">$GPGGA：起始引导符及语句格式说明(本句为GPS定位数据)；</span><br><span class="line">&lt;1&gt; UTC时间，格式为hhmmss.sss；</span><br><span class="line">&lt;2&gt; 纬度，格式为ddmm.mmmm(第一位是零也将传送)；</span><br><span class="line">&lt;3&gt; 纬度半球，N或S(北纬或南纬)</span><br><span class="line">&lt;4&gt; 经度，格式为dddmm.mmmm(第一位零也将传送)；</span><br><span class="line">&lt;5&gt; 经度半球，E或W(东经或西经)</span><br><span class="line">&lt;6&gt; GPS状态， 0初始化， 1单点定位， 2码差分， 3无效PPS， 4固定解， 5浮点解， 6正在估算 7，人工输入固定值， 8模拟模式， 9WAAS差分</span><br><span class="line">&lt;7&gt; 使用卫星数量，从00到12(第一个零也将传送)</span><br><span class="line">&lt;8&gt; HDOP-水平精度因子，0.5到99.9，一般认为HDOP越小，质量越好。</span><br><span class="line">&lt;9&gt; 椭球高，-9999.9到9999.9米</span><br><span class="line">M 指单位米</span><br><span class="line">&lt;10&gt; 大地水准面高度异常差值，-9999.9到9999.9米</span><br><span class="line">M 指单位米</span><br><span class="line">&lt;11&gt; 差分GPS数据期限(RTCM SC-104)，最后设立RTCM传送的秒数量，如不是差分定位则为空</span><br><span class="line">&lt;12&gt; 差分参考基站标号，从0000到1023(首位0也将传送)。</span><br><span class="line">* 语句结束标志符</span><br><span class="line">xx 从$开始到*之间的所有ASCII码的异或校验</span><br><span class="line">&lt;CR&gt; 回车符，结束标记</span><br><span class="line">&lt;LF&gt; 换行符，结束标记</span><br></pre></td></tr></table></figure>
+            <div itemprop="articleBody"><p>pycharm专业版是有专门用于flask开发的，可以在右上角直接调，一下主要是讲讲这三个的作用和pycharm社区版的配置方法。</p>
+<h2 id="一、dubug"><a href="#一、dubug" class="headerlink" title="一、dubug"></a>一、dubug</h2><h3 id="1-作用"><a href="#1-作用" class="headerlink" title="1.作用"></a>1.作用</h3><p>（1）在debug模式下，修改代码保存后会检测到代码的更改，刷新后自动加载，无需每次关闭重开，更加便捷。</p>
+<p>（2）debug模式下，如果代码有bug，在浏览器上可以看到出错信息。</p>
+<p>在<a target="_blank" rel="noopener" href="https://flask.net.cn/quickstart.html#quickstart">Flask中文文档</a>中有一个提醒：</p>
+<p><strong>Attention</strong><br><strong>虽然交互调试器不能在分布环境下工作（这使得它基本不可能用于生产环境），但是 它允许执行任意代码，这样会成为一个重大安全隐患。因此， 绝对不能在生产环境中使用调试器。</strong></p>
+<h3 id="2-配置方法"><a href="#2-配置方法" class="headerlink" title="2.配置方法"></a>2.配置方法</h3><p>app.py中加入代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
 
-<p>但这题只用经纬就行。</p>
-<p>上网知道了一个好用的py库叫pynmea2，可以提取其中的经纬度信息，然后查到了可以用</p>
-<p><a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/javascript-api/example/marker/replaying-historical-running-data">https://lbs.amap.com/demo/javascript-api/example/marker/replaying-historical-running-data</a></p>
-<p>来回放点的轨迹。</p>
-<p>写了一个Python脚本如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pynmea2</span><br><span class="line">filename = <span class="string">&#x27;CatchCat.txt&#x27;</span></span><br><span class="line"><span class="built_in">list</span> = []</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename) <span class="keyword">as</span> file_object:</span><br><span class="line">  <span class="keyword">for</span> line <span class="keyword">in</span> file_object:</span><br><span class="line">     list1= []</span><br><span class="line">     msg = pynmea2.parse(line)</span><br><span class="line">     list1.append(msg.longitude)</span><br><span class="line">     list1.append(msg.latitude)</span><br><span class="line">     <span class="built_in">list</span>.append(list1)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>)</span><br></pre></td></tr></table></figure>
+<p>点击右上角的运行，就可以直接跑了，再点右上角关闭。</p>
+<p>pycharm中把app.run()中改为app.run(debug=1)就开启调试模式了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
 
 
-<p> 将输出结果粘贴到网站右侧放经纬度的地方，得到路线图：</p>
-<p><img src="/static/CatCTF/GPS.png" alt="GPS"></p>
-<p>虽然有点不清楚，但还是看的出来的，flag是CatCTF{GPS_M1ao}</p>
-<h3 id="2-Miao"><a href="#2-Miao" class="headerlink" title="2.Miao"></a>2.Miao</h3><p>下载得到一张图片，binwalk分析不出来，用16进制编译器查看发现有一个wav文件，手动分离。</p>
-<p>是猫猫的Miao叫声的一个。</p>
-<p>用Audacity打开，查看频谱图得到key:CatCTF</p>
-<p>上网查了一下，知道了一款叫DeepSound的隐写工具。</p>
-<p>用DeepSound打开，用CatCTF作为密码，得到flag.txt。</p>
-<p>flag,txt打开发现是猫叫的密码，上网查了一下，选了一个网站解密</p>
-<p><a target="_blank" rel="noopener" href="http://hi.pcmoe.net/roar.html%E3%80%82">http://hi.pcmoe.net/roar.html。</a></p>
-<p>得到flag</p>
-<p>CatCTF{d0_y0u_Hate_c4t_ba3k1ng_?_M1ao~}</p>
-<p><strong>小总结：有找到密码的音频可以考虑DeepSound和SilentEye，这两个工具是可能要输入密码的</strong></p>
-<h3 id="3-catcat"><a href="#3-catcat" class="headerlink" title="3.catcat"></a>3.catcat</h3><p>下载后得到一个<strong>猫猫.jpg</strong>和一个<strong>我养了一只叫兔子的91岁的猫猫.txt</strong>，猜测jpg有密钥，txt是flag的加密。</p>
-<p>没发现名字的提示，且猫猫.jpg也没找到密钥，以为是用stegsolve。</p>
-<p>这里要提一嘴，<strong>jpg不可能是LSB</strong>。要去先了解原理，<strong>不要只会工具不会原理</strong>。</p>
-<p>后来才知道是rabbit加密（看txt文件名字的提示），至于密码，是在猫猫.jpg的数据里，用16进制编译器搜索password就行了。</p>
-<p><img src="/static/CatCTF/password.png" alt="password"></p>
-<p>用<a target="_blank" rel="noopener" href="https://www.sojson.com/encrypt_rabbit.html">网站</a>解密txt文件里的内容:</p>
-<p><img src="/static/CatCTF/rabbit.png" alt="rabbit"></p>
-<p>得到的是base91编码的数据（txt文件名里也有提示）</p>
-<p>再次用<a target="_blank" rel="noopener" href="https://ctf.bugku.com/tool/base91">网站</a>解密：</p>
-<p><img src="/static/CatCTF/base91.png" alt="base91"></p>
-<p>得到的是Ook的加密，最后用<a target="_blank" rel="noopener" href="https://www.splitbrain.org/services/ook">网站</a>解密，得到flag:</p>
-<p>CATCTF{Th1s_V3ry_cute_catcat!!!}</p>
-<h2 id="二、Web"><a href="#二、Web" class="headerlink" title="二、Web"></a>二、Web</h2><h3 id="1-catcat"><a href="#1-catcat" class="headerlink" title="1.catcat"></a>1.catcat</h3><p>任意文件读取漏洞。</p>
-<p>当时只做到找到源码就不会了，主要原因是不会写脚本。</p>
-<p><strong>小总结：要提升锻炼写脚本的能力</strong></p>
-<p>由于题目环境尚未重新开放，这里先用<a target="_blank" rel="noopener" href="https://www.wolai.com/nepnep/4njXHjpSLx3uPHR2fc6XL7">官网WP</a>占一下位置，到时候环境重开后再进行尝试。</p>
+<h2 id="二、host"><a href="#二、host" class="headerlink" title="二、host"></a>二、host</h2><h3 id="1-作用-1"><a href="#1-作用-1" class="headerlink" title="1.作用"></a>1.作用</h3><p>默认的host是127.0.0.1，可通过添加host让其他电脑访问到我们的flask项目。</p>
+<p>例如添加host:0.0.0.0，在局域网下就其他设备就可以通过访问电脑IP访问到flask项目。</p>
+<h3 id="2-配置方法-1"><a href="#2-配置方法-1" class="headerlink" title="2.配置方法"></a>2.配置方法</h3><p>app.run()括号中加host=”X.X.X.X”就行了。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、port"><a href="#三、port" class="headerlink" title="三、port"></a>三、port</h2><h3 id="1-作用-2"><a href="#1-作用-2" class="headerlink" title="1.作用"></a>1.作用</h3><p>在默认的5000端口被其他应用占用时，可通过修改port来运行当前项目，例如需要同时运行多个flask项目时。</p>
+<h3 id="2-修改方法"><a href="#2-修改方法" class="headerlink" title="2.修改方法"></a>2.修改方法</h3><p>app.run()括号中加port=X就行了。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(port=<span class="number">8000</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>最后附上一个简单的demo:</p>
+<p>原app.py:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run()</span><br></pre></td></tr></table></figure>
+
+<p>右上角运行后pycharm的输出：</p>
+<p><img src="/static/flask_configure/ori_app.png"></p>
+<p>修改后app.py:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World!&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>,port=<span class="number">8000</span>,debug=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>右上角运行后pycharm的输出：</p>
+<p><img src="/static/flask_configure/app.png"></p>
+<p>在手机（我的手机和电脑连的是同一个网络）上输入：192.168.0.104:8000 也可以访问到这个flask项目啦。</p>
+<p>附上手机的截图：</p>
+<p><img src="/static/flask_configure/phone.jpg"></p>
 </div>
         </div>
         
@@ -272,7 +266,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "https://rippleqaq.github.io/2023/01/04/CatCTF/",
+                text: "https://rippleqaq.github.io/2023/01/05/flask_configure/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -284,13 +278,10 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "https://rippleqaq.github.io/2023/01/04/CatCTF/";
-            const title         = "「CatCTF」";
-            const excerpt       = `一个为猫猫打猫粮的公益CTF，记录一下收获
-一、Misc1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。
-附件是GPS数据文件CatchCat.txt，里面有很多GPS数据：
-格式都是：
-$GPGGA,0...`;
+            const hostUrl       = "https://rippleqaq.github.io/2023/01/05/flask_configure/";
+            const title         = "「flask中debug、host、port的配置方法(pycharm社区版)」";
+            const excerpt       = `pycharm专业版是有专门用于flask开发的，可以在右上角直接调，一下主要是讲讲这三个的作用和pycharm社区版的配置方法。
+一、dubug1.作用（1）在debug模式下，修改代码保存后会检测到代码的更改，刷新后自动加载，无需...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -312,7 +303,7 @@ $GPGGA,0...`;
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-01-05T05:30:14.885Z" itemprop="dateModified">最后编辑：2023-01-05</time>
+                    <time datetime="2023-01-05T07:35:12.969Z" itemprop="dateModified">最后编辑：2023-01-05</time>
                 </div>
             </div>
         </footer>
@@ -321,13 +312,9 @@ $GPGGA,0...`;
         <nav class="navigation post-navigation clearfix" role="navigation">
             
             <div class="nav-previous clearfix">
-                <a title=" 向博客中上传图片" href="/2022/12/15/upload_img_on_blog/">&lt; 上一篇</a>
+                <a title=" CatCTF" href="/2023/01/04/CatCTF/">&lt; 上一篇</a>
             </div>
             
-            
-            <div class="nav-next clearfix">
-                <a title=" flask中debug、host、port的配置方法(pycharm社区版)" href="/2023/01/05/flask_configure/">下一篇 &gt;</a>
-            </div>
             
         </nav>
     
@@ -395,7 +382,7 @@ $GPGGA,0...`;
         <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
     </h4>
     <div class="textwidget">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Misc"><span class="toc-text">一、Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CatchCat"><span class="toc-text">1.CatchCat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Miao"><span class="toc-text">2.Miao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-catcat"><span class="toc-text">3.catcat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Web"><span class="toc-text">二、Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-catcat"><span class="toc-text">1.catcat</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81dubug"><span class="toc-text">一、dubug</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%9C%E7%94%A8"><span class="toc-text">1.作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95"><span class="toc-text">2.配置方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81host"><span class="toc-text">二、host</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%9C%E7%94%A8-1"><span class="toc-text">1.作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95-1"><span class="toc-text">2.配置方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81port"><span class="toc-text">三、port</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%9C%E7%94%A8-2"><span class="toc-text">1.作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95"><span class="toc-text">2.修改方法</span></a></li></ol></li></ol>
     </div>
 </aside>
                 
