@@ -16,16 +16,19 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="一个为猫猫打猫粮的公益CTF，记录一下收获 一、MISC1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。 附件是GPS数据文件CatchCat.txt，里面有很多GPS数据： 格式都是： $GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E 网上的解释：">
+  <meta name="description" content="一个为猫猫打猫粮的公益CTF，记录一下收获 一、Misc1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。 附件是GPS数据文件CatchCat.txt，里面有很多GPS数据： 格式都是： $GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E 网上的解释：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CatCTF">
 <meta property="og:url" content="https://rippleqaq.github.io/2023/01/04/CatCTF/index.html">
 <meta property="og:site_name" content="ripple">
-<meta property="og:description" content="一个为猫猫打猫粮的公益CTF，记录一下收获 一、MISC1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。 附件是GPS数据文件CatchCat.txt，里面有很多GPS数据： 格式都是： $GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E 网上的解释：">
+<meta property="og:description" content="一个为猫猫打猫粮的公益CTF，记录一下收获 一、Misc1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。 附件是GPS数据文件CatchCat.txt，里面有很多GPS数据： 格式都是： $GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E 网上的解释：">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://rippleqaq.github.io/static/CatCTF/GPS.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/CatCTF/password.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/CatCTF/rabbit.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/CatCTF/base91.png">
 <meta property="article:published_time" content="2023-01-04T13:16:03.582Z">
-<meta property="article:modified_time" content="2023-01-04T13:17:48.943Z">
+<meta property="article:modified_time" content="2023-01-05T03:52:23.868Z">
 <meta property="article:author" content="rippleQAQ">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://rippleqaq.github.io/static/CatCTF/GPS.png">
@@ -149,7 +152,7 @@
                     <i class="fa fa-edit"></i> 
                     
                     
-                        ~1.89K
+                        ~2.30K
                     
                     字
                 </li>
@@ -160,18 +163,18 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1672838268943"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1672890743868"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
                 <div class="kratos-post-inner-toc toc-div-class" >
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81MISC"><span class="toc-number">1.</span> <span class="toc-text">一、MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CatchCat"><span class="toc-number">1.1.</span> <span class="toc-text">1.CatchCat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Miao"><span class="toc-number">1.2.</span> <span class="toc-text">2.Miao</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Misc"><span class="toc-number">1.</span> <span class="toc-text">一、Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CatchCat"><span class="toc-number">1.1.</span> <span class="toc-text">1.CatchCat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Miao"><span class="toc-number">1.2.</span> <span class="toc-text">2.Miao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-catcat"><span class="toc-number">1.3.</span> <span class="toc-text">3.catcat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Web"><span class="toc-number">2.</span> <span class="toc-text">二、Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-catcat"><span class="toc-number">2.1.</span> <span class="toc-text">1.catcat</span></a></li></ol></li></ol>
                 </div>
             
             <hr />
             <div itemprop="articleBody"><p>一个为猫猫打猫粮的公益CTF，记录一下收获</p>
-<h2 id="一、MISC"><a href="#一、MISC" class="headerlink" title="一、MISC"></a>一、MISC</h2><h3 id="1-CatchCat"><a href="#1-CatchCat" class="headerlink" title="1.CatchCat"></a>1.<strong>CatchCat</strong></h3><p>第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。</p>
+<h2 id="一、Misc"><a href="#一、Misc" class="headerlink" title="一、Misc"></a>一、Misc</h2><h3 id="1-CatchCat"><a href="#1-CatchCat" class="headerlink" title="1.CatchCat"></a>1.<strong>CatchCat</strong></h3><p>第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。</p>
 <p>附件是GPS数据文件CatchCat.txt，里面有很多GPS数据：</p>
 <p>格式都是：</p>
 <p>$GPGGA,090000.00,3416.48590278,N,10856.86623887,E,1,05,2.87,160.00,M,-21.3213,M,,*7E</p>
@@ -183,7 +186,7 @@
 <p><a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/javascript-api/example/marker/replaying-historical-running-data">https://lbs.amap.com/demo/javascript-api/example/marker/replaying-historical-running-data</a></p>
 <p>来回放点的轨迹。</p>
 <p>写了一个Python脚本如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pynmea2</span><br><span class="line"></span><br><span class="line">filename = <span class="string">&#x27;CatchCat.txt&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span> = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename) <span class="keyword">as</span> file_object:</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> line <span class="keyword">in</span> file_object:</span><br><span class="line"></span><br><span class="line">     list1= []</span><br><span class="line"></span><br><span class="line">     msg = pynmea2.parse(line)</span><br><span class="line"></span><br><span class="line">     list1.append(msg.longitude)</span><br><span class="line"></span><br><span class="line">     list1.append(msg.latitude)</span><br><span class="line"></span><br><span class="line">     <span class="built_in">list</span>.append(list1)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pynmea2</span><br><span class="line">filename = <span class="string">&#x27;CatchCat.txt&#x27;</span></span><br><span class="line"><span class="built_in">list</span> = []</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(filename) <span class="keyword">as</span> file_object:</span><br><span class="line">  <span class="keyword">for</span> line <span class="keyword">in</span> file_object:</span><br><span class="line">     list1= []</span><br><span class="line">     msg = pynmea2.parse(line)</span><br><span class="line">     list1.append(msg.longitude)</span><br><span class="line">     list1.append(msg.latitude)</span><br><span class="line">     <span class="built_in">list</span>.append(list1)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -200,6 +203,22 @@
 <p>得到flag</p>
 <p>CatCTF{d0_y0u_Hate_c4t_ba3k1ng_?_M1ao~}</p>
 <p><strong>小总结：有找到密码的音频可以考虑DeepSound和SilentEye，这两个工具是可能要输入密码的</strong></p>
+<h3 id="3-catcat"><a href="#3-catcat" class="headerlink" title="3.catcat"></a>3.catcat</h3><p>下载后得到一个<strong>猫猫.jpg</strong>和一个<strong>我养了一只叫兔子的91岁的猫猫.txt</strong>，猜测jpg有密钥，txt是flag的加密。</p>
+<p>没发现名字的提示，且猫猫.jpg也没找到密钥，以为是用stegsolve。</p>
+<p>这里要提一嘴，<strong>jpg不可能是LSB</strong>。要去先了解原理，<strong>不要只会工具不会原理</strong>。</p>
+<p>后来才知道是rabbit加密（看txt文件名字的提示），至于密码，是在猫猫.jpg的数据里，用16进制编译器搜索password就行了。</p>
+<p><img src="/static/CatCTF/password.png" alt="password"></p>
+<p>用<a target="_blank" rel="noopener" href="https://www.sojson.com/encrypt_rabbit.html">网站</a>解密txt文件里的内容:</p>
+<p><img src="/static/CatCTF/rabbit.png" alt="rabbit"></p>
+<p>得到的是base91编码的数据（txt文件名里也有提示）</p>
+<p>再次用<a target="_blank" rel="noopener" href="https://ctf.bugku.com/tool/base91">网站</a>解密：</p>
+<p><img src="/static/CatCTF/base91.png" alt="base91"></p>
+<p>得到的是Ook的加密，最后用<a target="_blank" rel="noopener" href="https://www.splitbrain.org/services/ook">网站</a>解密，得到flag:</p>
+<p>CATCTF{Th1s_V3ry_cute_catcat!!!}</p>
+<h2 id="二、Web"><a href="#二、Web" class="headerlink" title="二、Web"></a>二、Web</h2><h3 id="1-catcat"><a href="#1-catcat" class="headerlink" title="1.catcat"></a>1.catcat</h3><p>任意文件读取漏洞。</p>
+<p>当时只做到找到源码就不会了，主要原因是不会写脚本。</p>
+<p><strong>小总结：要提升锻炼写脚本的能力</strong></p>
+<p>由于题目环境尚未重新开放，这里先用<a target="_blank" rel="noopener" href="https://www.wolai.com/nepnep/4njXHjpSLx3uPHR2fc6XL7">官网WP</a>占一下位置，到时候环境重开后再进行尝试。</p>
 </div>
         </div>
         
@@ -268,7 +287,7 @@
             const hostUrl       = "https://rippleqaq.github.io/2023/01/04/CatCTF/";
             const title         = "「CatCTF」";
             const excerpt       = `一个为猫猫打猫粮的公益CTF，记录一下收获
-一、MISC1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。
+一、Misc1.CatchCat第一次做GPS题，上网查了资料写脚本做出来了，很有成就感。
 附件是GPS数据文件CatchCat.txt，里面有很多GPS数据：
 格式都是：
 $GPGGA,0...`;
@@ -293,7 +312,7 @@ $GPGGA,0...`;
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-01-04T13:17:48.943Z" itemprop="dateModified">最后编辑：2023-01-04</time>
+                    <time datetime="2023-01-05T03:52:23.868Z" itemprop="dateModified">最后编辑：2023-01-05</time>
                 </div>
             </div>
         </footer>
@@ -372,7 +391,7 @@ $GPGGA,0...`;
         <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
     </h4>
     <div class="textwidget">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81MISC"><span class="toc-text">一、MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CatchCat"><span class="toc-text">1.CatchCat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Miao"><span class="toc-text">2.Miao</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Misc"><span class="toc-text">一、Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CatchCat"><span class="toc-text">1.CatchCat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Miao"><span class="toc-text">2.Miao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-catcat"><span class="toc-text">3.catcat</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Web"><span class="toc-text">二、Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-catcat"><span class="toc-text">1.catcat</span></a></li></ol></li></ol>
     </div>
 </aside>
                 
