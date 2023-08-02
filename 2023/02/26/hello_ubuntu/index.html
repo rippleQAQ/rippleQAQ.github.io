@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>双系统的安装，hello linux | ripple</title>
+  <meta name="author" content="rippleQAQ" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="安装双系统终于下定决心换一个系统，舍不得之前windows的东西，正好之前加装了一块硬盘，分出了150G装一个双系统。 简单写一下遇到的问题与解决。 主要参考了网站https:&#x2F;&#x2F;www.cnblogs.com&#x2F;masbay&#x2F;p&#x2F;10745170.html。 是用的华硕天选2笔记本，原装系统是windows11。 需要准备一个大于 2G 的 U 盘 。(提前备份，要格式化) 1.下载映像文件用镜像">
+<meta property="og:type" content="article">
+<meta property="og:title" content="双系统的安装，hello linux">
+<meta property="og:url" content="https://rippleqaq.github.io/2023/02/26/hello_ubuntu/index.html">
+<meta property="og:site_name" content="ripple">
+<meta property="og:description" content="安装双系统终于下定决心换一个系统，舍不得之前windows的东西，正好之前加装了一块硬盘，分出了150G装一个双系统。 简单写一下遇到的问题与解决。 主要参考了网站https:&#x2F;&#x2F;www.cnblogs.com&#x2F;masbay&#x2F;p&#x2F;10745170.html。 是用的华硕天选2笔记本，原装系统是windows11。 需要准备一个大于 2G 的 U 盘 。(提前备份，要格式化) 1.下载映像文件用镜像">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://rippleqaq.github.io/static/hello_ubuntu/rufus.jpg">
+<meta property="og:image" content="https://rippleqaq.github.io/static/hello_ubuntu/closebitlocker.jpg">
+<meta property="og:image" content="https://rippleqaq.github.io/static/hello_ubuntu/advancedmode.jpg">
+<meta property="og:image" content="https://rippleqaq.github.io/static/hello_ubuntu/secure_boot.jpg">
+<meta property="og:image" content="https://rippleqaq.github.io/static/hello_ubuntu/security.jpg">
+<meta property="og:image" content="https://rippleqaq.github.io/static/hello_ubuntu/change.jpg">
+<meta property="og:image" content="https://rippleqaq.github.io/static/hello_ubuntu/time.png">
+<meta property="article:published_time" content="2023-02-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-02T05:08:02.086Z">
+<meta property="article:author" content="rippleQAQ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rippleqaq.github.io/static/hello_ubuntu/rufus.jpg">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">ripple</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>ripple</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://rippleqaq.github.io/2023/02/26/hello_ubuntu/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">双系统的安装，hello linux</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2023-02-25T16:00:00.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-02-26</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">rippleQAQ</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~2.90K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1690952882086"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8C%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">安装双系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">1.下载映像文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%BB%E5%BD%95%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">2.刻录软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%85%B3%E9%97%ADbitlocker"><span class="toc-number">1.3.</span> <span class="toc-text">3.关闭bitlocker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%9B%E5%BB%BA%E7%A9%BA%E7%99%BD%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-number">1.4.</span> <span class="toc-text">4.创建空白磁盘分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%BF%9B%E5%85%A5bios"><span class="toc-number">1.5.</span> <span class="toc-text">5.进入bios</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%AE%89%E8%A3%85ubuntu"><span class="toc-number">1.6.</span> <span class="toc-text">6.安装ubuntu</span></a></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h2 id="安装双系统"><a href="#安装双系统" class="headerlink" title="安装双系统"></a>安装双系统</h2><p>终于下定决心换一个系统，舍不得之前windows的东西，正好之前加装了一块硬盘，分出了150G装一个双系统。</p>
+<p>简单写一下遇到的问题与解决。</p>
+<p>主要参考了网站<a target="_blank" rel="noopener" href="https://www.cnblogs.com/masbay/p/10745170.html%E3%80%82">https://www.cnblogs.com/masbay/p/10745170.html。</a></p>
+<p>是用的华硕天选2笔记本，原装系统是windows11。</p>
+<p>需要准备一个大于 2G 的 U 盘 。(提前备份，要格式化)</p>
+<h3 id="1-下载映像文件"><a href="#1-下载映像文件" class="headerlink" title="1.下载映像文件"></a>1.下载映像文件</h3><p>用镜像站下载会比较快，当时用的是清华源<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a></p>
+<p>点击获取下载链接，选择你要下载的镜像文件</p>
+<p>我选择装的系统是ubuntu的22.04.2 (amd64, Desktop LiveDVD）</p>
+<p>找到对应的下载即可。</p>
+<h3 id="2-刻录软件"><a href="#2-刻录软件" class="headerlink" title="2.刻录软件"></a>2.刻录软件</h3><p>我是采用了rufus来刻录，网站是<a target="_blank" rel="noopener" href="https://rufus.ie/zh/">https://rufus.ie/zh/</a></p>
+<p><img src="/static/hello_ubuntu/rufus.jpg"></p>
+<p>插入你的U盘，格式化。</p>
+<p>打开这个软件，选择下载的映像文件，开始刻录，我其他都是默认来的。</p>
+<p>刻录需要等待一段时间。</p>
+<h3 id="3-关闭bitlocker"><a href="#3-关闭bitlocker" class="headerlink" title="3.关闭bitlocker"></a>3.关闭bitlocker</h3><p>安装时候遇见的第一个问题，一开始没关后面无法安装。</p>
+<p>我一开始是开着的。</p>
+<p>关闭方法：</p>
+<p>打开设置-隐私和安全性-设备加密</p>
+<p>关闭设备加密（这里解密要一段时间的）</p>
+<p><img src="/static/hello_ubuntu/closebitlocker.jpg"></p>
+<h3 id="4-创建空白磁盘分区"><a href="#4-创建空白磁盘分区" class="headerlink" title="4.创建空白磁盘分区"></a>4.创建空白磁盘分区</h3><p>右键此电脑，显示更多选项-管理-磁盘管理</p>
+<p>就可以看到你的磁盘了，在这里其实可以看到磁盘是否被bitlocker加密，如果有的话请先解密。</p>
+<p>选择最后一个磁盘空间的磁盘，比如 CD两个盘的最后一个盘是D盘（CDE盘的最后一个E盘，CDEF盘的最后一个盘F盘，以此类推），右键点击该磁盘，选择压缩卷。</p>
+<p>选择你要压缩的量。</p>
+<p>这里决定你另一个系统所能用的空间。</p>
+<p>保证最后一个盘有40~50G的空余空间吧，或者如果你空间足够，强烈建议60、80、100或120等大一点更好。</p>
+<p>我是分了150G（这样很大很爽）</p>
+<p>压缩就OK了</p>
+<h3 id="5-进入bios"><a href="#5-进入bios" class="headerlink" title="5.进入bios"></a>5.进入bios</h3><p><strong>插上你的U盘</strong>，关机后开机。进入bios</p>
+<p>这个不同电脑可能不一样，华硕是在开机时按F2进入</p>
+<p>（提一嘴华硕的bios界面真的帅</p>
+<p>先关掉secure boot</p>
+<p>华硕是advanced mode-security-secure boot-secure boot enabled -&gt;disabled</p>
+<p><img src="/static/hello_ubuntu/advancedmode.jpg"></p>
+<p><img src="/static/hello_ubuntu/secure_boot.jpg"></p>
+<p><img src="/static/hello_ubuntu/security.jpg"></p>
+<p>关secure boot上面那个。</p>
+<p>然后返回主界面，将windows和你的另一个系统位置互换一下。</p>
+<p><img src="/static/hello_ubuntu/change.jpg"></p>
+<p>最后点save &amp; exit就行了（不同电脑可能不同）</p>
+<p>这时候就会进入安装引导。</p>
+<h3 id="6-安装ubuntu"><a href="#6-安装ubuntu" class="headerlink" title="6.安装ubuntu"></a>6.安装ubuntu</h3><p>其他的默认就行，时区上海。</p>
+<p><strong>但注意！！！下面做不好可能你会失去原系统</strong></p>
+<p>在提示：<strong>这台计算机似乎没有安装操作系统，你准备怎么做的时候</strong></p>
+<p>选择：<strong>其他选项</strong>（英语：<strong>something else</strong>）</p>
+<p>找到里面会有一个空闲分区（free），大小和我们之前分的差不多，也就是我们之前所创建的那个分区。</p>
+<p>右键手动分区。</p>
+<p>linux分区也很有说法的，可以网上查一下推荐的分区方式。</p>
+<p>这里参考那个网站：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//单硬盘</span><br><span class="line">在这里，我们谈谈关于 Linux 的分区：</span><br><span class="line">a.首先 Linux 分区和 WINDOWS 分区是不一样的， Linux 是以文件形式作为分区</span><br><span class="line"></span><br><span class="line">b.所以分区就像划分磁盘大小一样， 在这里假设你划分的空盘分区为 60G，则我们可以将其分为 :</span><br><span class="line"></span><br><span class="line">点空闲盘符，点击+进行分区，分区如下：</span><br><span class="line"></span><br><span class="line">1）/boot：这个就是实现你双系统的原因了，这个就是用于启动 ubuntu 的目录，里面会有系统的引导，这个文件其实只有几十兆，但是我们建议将其划分为 200M 文件格式为 ext4，这个分区必不可少，否则后果你懂得！</span><br><span class="line"></span><br><span class="line">2）swap:这个是 Linux 也就是 ubuntu 的交换区目录，这个一般的大小为内存的 2 倍左右， 主要是用来在电脑内存不足的情况下，系统会调用这片区域，来运行程序，我们可以将其分为 4G， 这个把ext4换成交换空间，英文swap</span><br><span class="line"></span><br><span class="line">3) /:这是 linux 也就是 ubuntu 的根目录就一个反斜杠表示，相当于windows的C盘， 我们将其分为 10G，文件格式为 ext4，条件允许可以大一点，可以20G，毕竟ubuntu装软件默认是装在这里的，大一点可能会省去后面隐藏的麻烦。</span><br><span class="line"></span><br><span class="line">4）/home:这是 ubuntu 的“其他盘”， 这个也可以说是我们的个人目录，相当于windows的其他盘，所以为了让我们自己的目录大一点，剩下的全分给它，文件格式为 ext4</span><br><span class="line"></span><br><span class="line">好了，这部分分区讲述完毕，你完全可以就按这个进行分区。当然，你可以划分的更详细，具体划分可以百度，但我觉得没有多大必要。</span><br><span class="line"></span><br><span class="line">//双硬盘</span><br><span class="line">在这里，我们谈谈关于 Linux的分区：</span><br><span class="line">a.首先 Linux 分区和 windows分区是不一样的， Linux 是以文件形式作为分区</span><br><span class="line"></span><br><span class="line">b.所以分区就像划分磁盘大小一样，在这假如你划分的空盘分区为 80G，则我们可以将其分为 :</span><br><span class="line"></span><br><span class="line">点空闲盘符，点击+进行分区，分区如下</span><br><span class="line"></span><br><span class="line">1） efi：这个就是实现你双系统的原因了，这个就是用启动 ubuntu 的目录，里面会有系统的引导，这个文件其实只有几十兆，但是我们建议将其划分为 200M 文件格式为efi，这个分区必不可少，否则后果你懂得！</span><br><span class="line"></span><br><span class="line">（这也就是MBR和UEFI的区别！！！！不用/boot，看不懂请忽略这句话）</span><br><span class="line"></span><br><span class="line">2） swap:这个是 Linux 也就是 ubuntu 的交换区目录，这个一般的大小为内存的 2 倍左右，主要是用来在电脑内存不足的情况下，系统会调用这片区域，来运行程序，我们可以将其分为 8G， 文件格式选择交换空间，英文swap</span><br><span class="line"></span><br><span class="line">3) /:这是 linux 也就是 ubuntu 的根目录就一个反斜杠表示,相当于windows的C盘，我们将其分为 20G，文件格式为 ext4（根据你的磁盘空间调整，可以大一点，毕竟ubuntu装软件都是默认装在根目录的）</span><br><span class="line"></span><br><span class="line">4） /home:这是 ubuntu的其他盘，相当于windows的其他盘，所以为了让我们自己的目录大一点，剩下的全分给它，文件格式为 ext4</span><br></pre></td></tr></table></figure>
+
+<p>我是分了200M的EFI，8Gswap，40G/，剩下全给了/home。</p>
+<p>然后继续安装就行了。</p>
+<p>最后成功搞定双系统。</p>
+<p>[2023.7.26更新]我这个分法有点问题40G给/还是太少了，后来直接装了很多应用在/opt满了然后系统烂了，索性格式化了，东西没掉了，从0开始QAQ，大家请根据自己具体需要来分空间！</p>
+<p>这次分200M的EFI，8Gswap，100G/，剩下的给/home，QAQ。</p>
+<p>哦对了，还有一件事～</p>
+<p>就是装完双系统后时间错乱的问题，装完ubuntu后我怀着紧张的心情进入bios调整位置回到原来的windows，希望不要出现什么大问题。</p>
+<p>最后windows可以正常使用，但是时间往后走了8个小时。这个是很小的问题，进设置-时间和语言-日期和时间-立即同步就行了。</p>
+<p><img src="/static/hello_ubuntu/time.png"></p>
+<p>linux完全不会啊啊啊。开始摸索。</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://rippleqaq.github.io/2023/02/26/hello_ubuntu/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://rippleqaq.github.io/2023/02/26/hello_ubuntu/";
+            const title         = "「双系统的安装，hello linux」";
+            const excerpt       = `安装双系统终于下定决心换一个系统，舍不得之前windows的东西，正好之前加装了一块硬盘，分出了150G装一个双系统。
+简单写一下遇到的问题与解决。
+主要参考了网站https://www.cnblogs.com/masbay/p/10...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    
+                </div>
+                <div class="pull-date">
+                    <time datetime="2023-08-02T05:08:02.086Z" itemprop="dateModified">最后编辑：2023-08-02</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" HGAME 2022 Week2 writeup by ripple" href="/2023/02/24/HGAME-Week2/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" linux内基本环境搭建" href="/2023/03/09/build_environment/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/static/1.jpg" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                15
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                5
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                0
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8C%E7%B3%BB%E7%BB%9F"><span class="toc-text">安装双系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E6%98%A0%E5%83%8F%E6%96%87%E4%BB%B6"><span class="toc-text">1.下载映像文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%BB%E5%BD%95%E8%BD%AF%E4%BB%B6"><span class="toc-text">2.刻录软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%85%B3%E9%97%ADbitlocker"><span class="toc-text">3.关闭bitlocker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%9B%E5%BB%BA%E7%A9%BA%E7%99%BD%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-text">4.创建空白磁盘分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%BF%9B%E5%85%A5bios"><span class="toc-text">5.进入bios</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%AE%89%E8%A3%85ubuntu"><span class="toc-text">6.安装ubuntu</span></a></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/match/">match</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/flask/">flask</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+            
+                
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2023/04/04/flask_variable/"><i class="fa  fa-book"></i> flask路由与视图映射与传参规则</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/03/11/HGAME-Final/"><i class="fa  fa-book"></i> HGAME 2022 FINAL writeup by ripple</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/03/09/build_environment/"><i class="fa  fa-book"></i> linux内基本环境搭建</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/02/26/hello_ubuntu/"><i class="fa  fa-book"></i> 双系统的安装，hello linux</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/02/24/HGAME-Week2/"><i class="fa  fa-book"></i> HGAME 2022 Week2 writeup by ripple</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/CandyUnion"><i class="fa fa-telegram"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https://nya.one/@rippleQAQ"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/rippleQAQ"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2023 ripple 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by rippleQAQ.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
