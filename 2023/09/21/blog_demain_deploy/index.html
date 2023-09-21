@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="ripple">
 <meta property="og:description" content="为博客设置个人域名最近买了一个域名，发现域名好贵啊QAQ，顺便就把博客放在这个域名下了，记录一下过程与遇到的问题。 主要参考的文章是：hexo史上最全搭建教程 1.购买域名想要为你的博客设置个人域名，首先你要有一个域名（废话）。可以在腾讯云或者阿里云等平台上买，我这里是在阿里云上面买的域名。所以以阿里云为例：阿里云域名购买入口(阿里云打钱) 查询你喜欢的域名购买即可~ .top比较便宜，一般情况下">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://rippleqaq.github.io/blog_demain_deploy/setting.png">
-<meta property="og:image" content="https://rippleqaq.github.io/blog_demain_deploy/create_cname.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/blog_demain_deploy/setting.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/blog_demain_deploy/create_cname.png">
 <meta property="article:published_time" content="2023-09-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-21T03:16:38.106Z">
+<meta property="article:modified_time" content="2023-09-21T08:49:34.241Z">
 <meta property="article:author" content="rippleQAQ">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://rippleqaq.github.io/blog_demain_deploy/setting.png">
+<meta name="twitter:image" content="https://rippleqaq.github.io/static/blog_demain_deploy/setting.png">
   
   <!-- 站点验证相关 -->
   
@@ -161,7 +161,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1695266198106"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1695286174241"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -181,12 +181,12 @@
 <p>这里面如果实名不通过的话会有提醒，进入按照步骤来就行了，要先填一个模板，模板要上传身份证的，可以提前拍个照先，模板审核通过之后，选择模板上传等待审核通过就行了。模板审核比较久一些，后面的审核比较快。</p>
 <h3 id="3-添加DNS解析"><a href="#3-添加DNS解析" class="headerlink" title="3.添加DNS解析"></a>3.添加DNS解析</h3><p>在阿里云右上角控制台进入后，在概览-我的资源-域名进入域名控制台，再右上角进入域名解析管理，然后点击你购买的那个域名。</p>
 <p>右上角添加记录，设置如下：</p>
-<p><img src="/blog_demain_deploy/setting.png"></p>
+<p><img src="/static/blog_demain_deploy/setting.png"></p>
 <p>rippleqaq.top是我的域名，这里要换成你的~</p>
 <p>192.30.252.153 和 192.30.252.154 是GitHub的服务器地址</p>
 <p>然后在github上找到你博客的库：yourname.github.io，进入这个库的settings，右边栏找到Pages-Custom Demain，写入你的域名（我是rippleqaq.top）后点击Save。</p>
 <p>最后，在你的博客文件夹下source文件夹中添加一个没有后缀的文件CNAME，里面的内容是你的域名，你可以先创建一个.txt文件，输入你的域名之后删掉.txt后缀即可。如图：</p>
-<p><img src="/blog_demain_deploy/create_cname.png"></p>
+<p><img src="/static/blog_demain_deploy/create_cname.png"></p>
 <p>接着就是经典三件套：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
@@ -283,7 +283,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2023-09-21T03:16:38.106Z" itemprop="dateModified">最后编辑：2023-09-21</time>
+                    <time datetime="2023-09-21T08:49:34.241Z" itemprop="dateModified">最后编辑：2023-09-21</time>
                 </div>
             </div>
         </footer>
